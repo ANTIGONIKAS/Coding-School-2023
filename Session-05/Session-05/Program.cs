@@ -47,6 +47,7 @@ class Program
             Console.Write(i + ", ");
         }
         Console.WriteLine("\n");
+
         int[,] multi = exFour.multiArray(Array1, Array2);
 
         for (int i = 0; i < Array1.Length; i++)
