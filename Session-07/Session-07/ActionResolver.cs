@@ -6,6 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Session_07
 {
@@ -17,163 +18,109 @@ namespace Session_07
         Reverse,
     }
 
-    public class Message
-    {
+   
 
-        public Guid ID { get; set; }
-        public DateTime TimeStamp { get; set; }
 
-        //Change from Message to Text
-        public string Text { get; set; }
-        public Message() { 
-            
-            ID = Guid.NewGuid();
-        }
-        public Message(string text)
-        {
-            ID = Guid.NewGuid();
-            TimeStamp= DateTime.Now;
-            Text = text; 
-            
-        }
-    }
-    public class MessageLogger
-    {
+       public class ActionResolver { 
+    
 
-        public Message[] Messages { get; set; }
-        public MessageLogger() { 
+       public MessageLogger Logger { get; set; }
         
-            Messages = new Message[1000];
-
-
+        //ctor
+      public ActionResolver() { 
+                    
+       Logger  = new MessageLogger();
         }
-        public void ReadAll()
-        {
-        }
-        public void Clear()
-        {
+                     //methods
+        public ActionResponse Execute(ActionRequest request) { 
+                    
 
-        }
-        public void Write(Message message)
-        {
+                        ActionResponse response = new ActionResponse();
+                        response.ResponseID = Guid.NewGuid();
+                        response.RequestID = request.RequestID;
+                       
 
-        }
+                        Log("EXECUTION START");
 
-        public class ActionRequest
-        {
+                        //Message message= new Message("Execution start");
+                        //logger.Messages[0] = messages
 
-            public Guid RequestID { get; set; }
-            public String Input { get; set; }
-            public ActionEnum Action { get; set; }
+                        try
+                        {
 
-
-            public ActionRequest()
-            {
-                RequestID= Guid.NewGuid();
-
-            }
-            public class ActionResponse
-            {
-
-                public Guid RequestID { get; set; }
-                public Guid ResponseID { get; set; }
-                public String Output { get; set; }
-                public ActionResponse()
+                     switch (request.Action)
                 {
-                    ResponseID= Guid.NewGuid();
+                    case ActionEnum.Convert:
+                        Log("CONVERT");
+                        response.Output = Convert(request.Input);
+                        break;
+                    case ActionEnum.Uppercase:
+                        Log("UPPERCASE");
+                        response.Output = Uppercase(request.Input);
+                        break;
+                    case ActionEnum.Reverse:
+                        Log("REVERSE");
+                        response.Output = Reverse(request.Input);
+                        break;
+                    default:
+                        //Error message here
+                        break;
+                        }
 
+                        }
+                        catch (Exception ex)
+                        {
+                        Log(ex.Message);  
+                        }
+                        finally
+                        {
+                         Log("EXECUTION END");
 
-                }
-            }
-            public class ActionResolver
-            {
+                        }
 
-            public MessageLogger Logger { get; set; }
+                        return response;
 
+                    }
+                      private void Log(string text) { 
+                       Message message= new Message(text);
+                      Logger.Write(message);
+                       }
 
-                public ActionResolver()
-                {
+                    public string Convert(string input)
+                    {
+                        //“Convert” you must check if the Input is a decimal number and convert it to binary
 
-                }
+                        return string.Empty;
+                    }
 
-                public ActionResponse Execute(ActionRequest request) { 
+                    public string Uppercase(string input)
+                    {
+                        // “Uppercase” you must check if the Input is a string and has more than
+                        //one words(separated by a space), then find the longest word in the
+                        //Input string and convert it to uppercase.
 
-                    ActionResponse response =new ActionResponse();
-                    response.ResponseID = Guid.NewGuid();
-                    response.RequestID = request.RequestID;
-                    MessageLogger logger = new MessageLogger(); 
-                    Message message= new Message("Execution start");
-                   
-                 
-                    logger.Messages[0] = message;
+                        return input.ToUpper();
+                    }
+
+                    public String Reverse(string input)
+                    {
+                  // “Reverse” you must check if the Input is a string and reverse it.
+
+                     string rString = string.Empty;
+                     for (int i = input.Length - 1; i >= 0; i--)
+                        {
+                     rString += input[i];
+                          }
+                      return rString;
 
                     
-                    try {
-
-                        switch (request.Action)
-                        {
-                            case ActionEnum.Convert:
-                                response.Output=Convert(request.Input);
-                                break;
-                            case ActionEnum.Uppercase:
-                               response.Output= Uppercase(request.Input);
-                                break;
-                            case ActionEnum.Reverse:
-                                response.Output=Reverse(request.Input);
-                                break;
-                            default:
-                                //Error message here
-                                break;
-                        }
-                        
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Message message2 = new Message(ex.Message);
-                       
-                        logger.Messages[1] = message2;
-
-                    }
-                    finally
-                    {
-                        Message message3 = new Message("Execution end");
-                        
-                        logger.Messages[2] = message3;
-
                     }
 
-                    return response;
-
                 }
-                
-                
-                public string Convert(string input) {
-                 //“Convert” you must check if the Input is a decimal number and convert it to binary
-
-                    return string.Empty;
-                }
-                     
-                public string Uppercase(string input)
-                {
-                   // “Uppercase” you must check if the Input is a string and has more than
-                   //one words(separated by a space), then find the longest word in the
-                   //Input string and convert it to uppercase.
-
-                    return string.Empty;
-                }
-
-                public String Reverse(string input)
-                {
-                 // “Reverse” you must check if the Input is a string and reverse it.
-
-                    return string.Empty;
-                     }
-
             }
-        }
 
-    }
-}
+        
+
+    
+
 
