@@ -102,9 +102,9 @@ namespace Session_07
                     response.ResponseID = Guid.NewGuid();
                     response.RequestID = request.RequestID;
                     MessageLogger logger = new MessageLogger(); 
-                    Message message= new Message();
-                    message.Text = "Execution start";
-                    message.TimeStamp = DateTime.Now;
+                    Message message= new Message("Execution start");
+                   
+                 
                     logger.Messages[0] = message;
 
                     
@@ -131,18 +131,16 @@ namespace Session_07
                     }
                     catch (Exception ex)
                     {
-                        Message message2 = new Message();
-                        message.Text = ex.Message;
-                        message.TimeStamp = DateTime.Now;
+                        Message message2 = new Message(ex.Message);
+                       
                         logger.Messages[1] = message2;
 
                     }
                     finally
                     {
-                        Message message3 = new Message();
-                        message.Text = "Execution end";
-                        message.TimeStamp = DateTime.Now;
-                        logger.Messages[1] = message3;
+                        Message message3 = new Message("Execution end");
+                        
+                        logger.Messages[2] = message3;
 
                     }
 
