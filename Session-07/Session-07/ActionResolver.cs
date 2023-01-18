@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,35 +84,46 @@ namespace Session_07
 
                 public ActionResponse Execute(ActionRequest request)
                 {
+                    string output = string.Empty;
+                    try {
 
-                    switch (request.Action)
-                    {
-                        case ActionEnum.Convert:
-                            Convert();
-                            break;
-                        case ActionEnum.Uppercase:
-                            Uppercase();
-                            break;
-                        case ActionEnum.Reverse:
-                            Reverse();
-                            break;
-                        default:
-                            //Error message here
-                            break;
-
+                        switch (request.Action)
+                        {
+                            case ActionEnum.Convert:
+                                output=Convert(request.Input);
+                                break;
+                            case ActionEnum.Uppercase:
+                               output= Uppercase(request.Input);
+                                break;
+                            case ActionEnum.Reverse:
+                                output=Reverse(request.Input);
+                                break;
+                            default:
+                                //Error message here
+                                break;
+                        }
 
                     }
-
+                    catch(Exception ex)
+                    {
+                        throw;
+                    } 
 
                     return null;
 
                 }
 
-                public void Convert() { }
+                public string Convert(string input) {
+                    return string.Empty;
+                }
+                     
+                public string Uppercase(string input) {
+                    return string.Empty;
+                }
 
-                public void Uppercase() { }
-
-                public void Reverse() { }
+                public String Reverse(string input) {
+                    return string.Empty;
+                     }
 
             }
         }
