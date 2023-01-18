@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace Session_06
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            Course c1 = new Course();
+            c1.ID = 1;  
+            c1.Code = 2;
+            c1.Subject = "PROGRAMMING";
+            Console.WriteLine(c1);
         }
     }
 }
