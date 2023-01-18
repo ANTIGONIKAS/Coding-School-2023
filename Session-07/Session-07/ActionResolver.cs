@@ -25,13 +25,25 @@ namespace Session_07
 
         //Change from Message to Text
         public string Text { get; set; }
+        public Message() { 
+            
+            ID = Guid.NewGuid();
+        }
+        public Message(string text)
+        {
+            ID = Guid.NewGuid();
+            TimeStamp= DateTime.Now;
+            Text = text; 
+            
+        }
     }
     public class MessageLogger
     {
 
         public Message[] Messages { get; set; }
-        public MessageLogger()
-        {
+        public MessageLogger() { 
+        
+            Messages = new Message[1000];
 
 
         }
@@ -57,6 +69,7 @@ namespace Session_07
 
             public ActionRequest()
             {
+                RequestID= Guid.NewGuid();
 
             }
             public class ActionResponse
@@ -67,6 +80,7 @@ namespace Session_07
                 public String Output { get; set; }
                 public ActionResponse()
                 {
+                    ResponseID= Guid.NewGuid();
 
 
                 }
@@ -74,7 +88,7 @@ namespace Session_07
             public class ActionResolver
             {
 
-                public MessageLogger Logger { get; set; }
+            public MessageLogger Logger { get; set; }
 
 
                 public ActionResolver()
@@ -82,46 +96,80 @@ namespace Session_07
 
                 }
 
-                public ActionResponse Execute(ActionRequest request)
-                {
-                    string output = string.Empty;
+                public ActionResponse Execute(ActionRequest request) { 
+
+                    ActionResponse response =new ActionResponse();
+                    response.ResponseID = Guid.NewGuid();
+                    response.RequestID = request.RequestID;
+                    MessageLogger logger = new MessageLogger(); 
+                    Message message= new Message();
+                    message.Text = "Execution start";
+                    message.TimeStamp = DateTime.Now;
+                    logger.Messages[0] = message;
+
+                    
                     try {
 
                         switch (request.Action)
                         {
                             case ActionEnum.Convert:
-                                output=Convert(request.Input);
+                                response.Output=Convert(request.Input);
                                 break;
                             case ActionEnum.Uppercase:
-                               output= Uppercase(request.Input);
+                               response.Output= Uppercase(request.Input);
                                 break;
                             case ActionEnum.Reverse:
-                                output=Reverse(request.Input);
+                                response.Output=Reverse(request.Input);
                                 break;
                             default:
                                 //Error message here
                                 break;
                         }
+                        
+
 
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
-                        throw;
-                    } 
+                        Message message2 = new Message();
+                        message.Text = ex.Message;
+                        message.TimeStamp = DateTime.Now;
+                        logger.Messages[1] = message2;
 
-                    return null;
+                    }
+                    finally
+                    {
+                        Message message3 = new Message();
+                        message.Text = "Execution end";
+                        message.TimeStamp = DateTime.Now;
+                        logger.Messages[1] = message3;
+
+                    }
+
+                    return response;
 
                 }
-
+                
+                
                 public string Convert(string input) {
+                 //“Convert” you must check if the Input is a decimal number and convert it to binary
+
                     return string.Empty;
                 }
                      
-                public string Uppercase(string input) {
+                public string Uppercase(string input)
+                {
+                   // “Uppercase” you must check if the Input is a string and has more than
+                   //one words(separated by a space), then find the longest word in the
+                   //Input string and convert it to uppercase.
+
                     return string.Empty;
                 }
 
-                public String Reverse(string input) {
+                public String Reverse(string input)
+                {
+                 // “Reverse” you must check if the Input is a string and reverse it.
+
                     return string.Empty;
                      }
 
