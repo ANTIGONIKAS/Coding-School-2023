@@ -45,7 +45,7 @@
             this.grvStudents.Location = new System.Drawing.Point(94, 89);
             this.grvStudents.Name = "grvStudents";
             this.grvStudents.RowTemplate.Height = 25;
-            this.grvStudents.Size = new System.Drawing.Size(572, 274);
+            this.grvStudents.Size = new System.Drawing.Size(518, 274);
             this.grvStudents.TabIndex = 0;
             // 
             // colName
