@@ -11,11 +11,11 @@ public class University : Institute
 	{
 
 	}
-	public University(Guid id, string name, int yearsInService) : base(id, name, yearsInService)
-	{
+	//public University(Guid id, string name, int yearsInService) : base(id, name, yearsInService)
+	//{
 
 
-	}
+	//}
 	public University(Guid id, string name, int yearsInService, Student[] students, Course[] courses, Grade[] grades, Schedule[] scheduledCourse) :
 		base(id, name, yearsInService)
 	{
