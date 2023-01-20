@@ -1,6 +1,6 @@
 ﻿namespace Session_10
 {
-    partial class Form1
+    partial class form
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,34 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grvStudents = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.grvStudents)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // grvStudents
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(102, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(618, 308);
-            this.dataGridView1.TabIndex = 0;
+            this.grvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvStudents.Location = new System.Drawing.Point(102, 59);
+            this.grvStudents.Name = "grvStudents";
+            this.grvStudents.RowTemplate.Height = 25;
+            this.grvStudents.Size = new System.Drawing.Size(618, 308);
+            this.grvStudents.TabIndex = 0;
             // 
-            // Form1
+            // form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "Form1";
+            this.Controls.Add(this.grvStudents);
+            this.Name = "form";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.grvStudents)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView grvStudents;
     }
 }
