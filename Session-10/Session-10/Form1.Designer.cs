@@ -29,17 +29,42 @@
         private void InitializeComponent()
         {
             this.grvStudents = new System.Windows.Forms.DataGridView();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRegistrationNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grvStudents)).BeginInit();
             this.SuspendLayout();
             // 
             // grvStudents
             // 
             this.grvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grvStudents.Location = new System.Drawing.Point(102, 59);
+            this.grvStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colName,
+            this.colAge,
+            this.colRegistrationNumber});
+            this.grvStudents.Location = new System.Drawing.Point(94, 89);
             this.grvStudents.Name = "grvStudents";
             this.grvStudents.RowTemplate.Height = 25;
-            this.grvStudents.Size = new System.Drawing.Size(618, 308);
+            this.grvStudents.Size = new System.Drawing.Size(572, 274);
             this.grvStudents.TabIndex = 0;
+            // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.Name = "colName";
+            // 
+            // colAge
+            // 
+            this.colAge.DataPropertyName = "Age";
+            this.colAge.HeaderText = "Age";
+            this.colAge.Name = "colAge";
+            // 
+            // colRegistrationNumber
+            // 
+            this.colRegistrationNumber.DataPropertyName = "RegistrationNumber";
+            this.colRegistrationNumber.HeaderText = "RegistrationNumber";
+            this.colRegistrationNumber.Name = "colRegistrationNumber";
             // 
             // form
             // 
@@ -58,5 +83,8 @@
         #endregion
 
         private DataGridView grvStudents;
+        private DataGridViewTextBoxColumn colName;
+        private DataGridViewTextBoxColumn colAge;
+        private DataGridViewTextBoxColumn colRegistrationNumber;
     }
 }

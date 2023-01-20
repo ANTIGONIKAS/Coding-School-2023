@@ -9,7 +9,7 @@ namespace UniversityLib
    
         public class Course
         {
-            // public Guid ID { get; set }
+            public Guid ID { get; set; }
             public string Code { get; set; }
             public string Subject { get; set; }
 
@@ -18,7 +18,7 @@ namespace UniversityLib
             }
             public Course(Guid id, string code, string subject)
             {
-               // ID = id;
+                ID = id;
                 Code = code;
                 Subject = subject;
             }
