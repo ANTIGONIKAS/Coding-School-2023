@@ -11,16 +11,20 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        string Input = "Antigoni";
-        ActionRequest request = new ActionRequest();
+        string Input = "I learn programming ";
+        ActionRequest request = new ActionRequest(Input);
         ActionResolver resolver = new ActionResolver();
         ActionResponse response = new ActionResponse();
-        response = resolver.Execute(request);
-        resolver.Logger.ReadAll();
+        
+        Console.WriteLine("\nthe input is:" + Input + "\nthe reverse input is:" + resolver.Reverse(request.Input));
+        Console.WriteLine("\nthe input is:" + Input + "\nthe reverse input is:" + resolver.Uppercase(request.Input));
+        request.Input = "23";
+        
+        Console.WriteLine("\nthe input is: " + request.Input + "\nthe binary represantion is:" + resolver.Convert(request.Input));
+        Console.ReadLine();
+         response = resolver.Execute(request);
+         resolver.Logger.ReadAll();
 
-        Console.ReadLine();
-        Console.WriteLine("the input is:" + Input + "the reverse input is:" + resolver.Reverse(request.Input));
-        Console.ReadLine();
 
       
         

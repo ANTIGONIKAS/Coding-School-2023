@@ -1,37 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Person { 
+namespace Session_06
+{
+    public class Person
+    {
+        public Guid ID { get; set; }
+        public string Name  { get; set; }
 
-public Person() {
-       
-		
-	
-    }
+        public int Age { get; set; }
 
-	  //properties
-	public Guid ID { get;set }
-	public string? Name{ get;set }
-    public int Age { get;set }
+        public Person()
+        {
+            ID = Guid.NewGuid();
+        }
 
-	
-	
-	public Person(Guid id, string name) {
-		ID = id;
-		Name = name;
-	}
-    public Person(Guid id, string name,int age) 
-	{
+        public Person(Guid id)
+        {
+            ID = id;
+        }
+
+        public Person(Guid id,string name)
+        {
             ID = id;
             Name = name;
-			Age = age;
 
         }
-	//methods
-	public void GetName()
-	{
+     
+        public Person(Guid iD, string name, int age)
+        {
+            ID = iD;
+            Name = name;
+            Age = age;
+        }
+        public void GetName()
+        {
 
-	}
-	public void SetName(string name) { 
-		}
+        }
 
+        public void SetName(string name)
+        {
+
+        }
+
+
+    }
 }

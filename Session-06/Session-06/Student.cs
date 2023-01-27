@@ -1,49 +1,59 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Student : Person
-{   //properties
-    public int RegistrationNumber { get; set; }
-    public Courses[] Courses { get; set; }
+namespace Session_06
+{
+    public class Student : Person
+    {   //properties
+        public int RegistrationNumber { get; set; }
+        public Course[] Courses { get; set; }
 
-    public Student()
-    {
+        // constructors
+        public Student()
+        {
+
+        }
+
+        public Student(Guid id) : base(id)
+        {
+
+        }
+        public Student(Guid id, string name) : base(id, name)
+        {
+        }
+
+            
+
+        public Student (Guid id, string name, int age) : base(id, name, age){
+
+            }
+
+
+       public Student(Guid id, string name, int age,int registrationNumber) : base(id,name,age)
+            {
+                RegistrationNumber = registrationNumber;
+                
+            }
+        public Student(Guid id, string name, int age, int registrationNumber, Course[] courses): base(id,name,age)
+        {
+            RegistrationNumber = registrationNumber;
+            Courses = courses;
+
+        }
+        //methods
+        public void Attend(Course course, DateTime datetime)
+        {
+
+        }
+
+        public void WriteExam(Course course, DateTime datetime)
+        {
+
+        }
+
     }
-
-
-    public Student(Guid id) : base(Gui id)
-    {
-    }
-    public Student(Guid id, string name) : base(id, name)
-    {
-
-    }
-
-    public Student(Guid id, string name, int age, int RegistrationNumber) : base(id, name, age)
-    {
-        RegistrationNumber = registrationNumber;
-    }
-    public Student(Guid id, string name, int age, int registrationNumber, Courses[] courses) : base(id, name, age)
-    {
-        RegistrationNumber = registrationNumber;
-        Courses = courses;
-
-    }
-
-    /*
-
-    public Person()
-    public Person(Guid id)
-    public Person(Guid id, string name)
-    public Person(Guid id, string name, int age)
-
-    */
-    public void Attend(Course course, DateTime datetime)
-    {
-
-    }
-    public void WriteExam(Course course, DateTime datetime)
-    {
-
-
-    }
+    
 }

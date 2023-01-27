@@ -1,21 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Course
+namespace Session_06
 {
-    public Guid ID { get; set }
-    public string Code { get; set; }
-    public string Subject { get; set; }
+    public  class Course
+    {    //properties
+        public Guid ID { get; set; }
+        public string Code { get; set; }
+        public string Subject { get; set; }
 
-    public Course()
-	{
-	}
-    public Course(Guid id, string code, string subject)
-    {
-        ID = id;
-        Code= code; 
-        Subject= subject;   
+        //constructors
+        public Course()
+        {
+
+        }
+        public Course(Guid id)
+
+        {
+            ID = id;
+
+        }
+        public Course(Guid iD, string code) 
+        {
+             ID = iD;
+            Code = code;
+            
+        }
+        public Course(Guid iD, string code, string subject) 
+        {
+            Subject = subject;
+            ID = iD;    
+            Code = code;    
+        }
+
     }
-
-    
-
 }

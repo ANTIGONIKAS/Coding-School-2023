@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F6622CCE-C139-4B1E-B40E-B38CCFC1F2C9}</ProjectGuid>
+    <ProjectGuid>{9EDFAEB4-F92E-4E82-A30E-01DA8703434F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Session_06</RootNamespace>
     <AssemblyName>Session-06</AssemblyName>
@@ -43,8 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Course.cs" />
+    <Compile Include="Grade.cs" />
+    <Compile Include="Institute.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Professor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="University.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
