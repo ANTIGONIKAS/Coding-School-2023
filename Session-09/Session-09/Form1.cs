@@ -1,292 +1,224 @@
+﻿using CalculatorLib;
+using static CalculatorLib.Calculation;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace Session_09
 {
     public partial class Form1 : Form
     {
-        private decimal? _value1 = null;
-        private decimal? _value2 = null;
-        private decimal? _result = null;
+        public decimal? _x = null;
+        public decimal? _y = null;
+        public decimal? _res = null;
 
         private CalcOperation _calcOperation;
+
         enum CalcOperation
         {
             Addition,
-            Subtraction,
+            Subtraction,     
             Multiplication,
-            Division
+            Division,
+            RaiseToPower,
+            SquareRoot
+
         }
+
         public Form1()
         {
             InitializeComponent();
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-        
+
         private void btnEqual_Click(object sender, EventArgs e)
         {
+            Calculation calc = new Calculation();
             ctrlDisplay.Text += " = ";
-
 
             switch (_calcOperation)
             {
                 case CalcOperation.Addition:
-                    
-                    _result = _value1 + _value2;
+
+                    Addition addition = new Addition();
+                    _res = addition.Do(_x, _y);
 
                     break;
                 case CalcOperation.Subtraction:
-                    _result = _value1 - _value2;
+
+                    Subtraction sub = new Subtraction();
+                    _res = sub.Do(_x, _y);
+
                     break;
                 case CalcOperation.Multiplication:
-                    _result = _value1 * _value2;
+
+                    Multiplication mul = new Multiplication();
+                    _res = mul.Do(_x, _y);
+
                     break;
+
                 case CalcOperation.Division:
-                    _result = _value1 / _value2;
+                    Division div = new Division();
+                    _res = div.Do(_x, _y);
+
+                    break;
+                case CalcOperation.RaiseToPower:
+                    RaiseToPower power = new RaiseToPower();
+                    _res = power.Do(_x, _y);
+                    break;
+
+                case CalcOperation.SquareRoot:
+                    SquareRoot sq = new SquareRoot();
+                    _res = sq.Do(_x);
                     break;
                 default:
                     break;
             }
-            ctrlDisplay.Text += _result;
 
-
+            ctrlDisplay.Text += _res;
         }
 
-
-      //    int i=0;
-          private void btnOne_Click(object sender, EventArgs e) {
-
-            //    if ( i == 0 &&_result != null) {
-            //        ctrlDisplay.Text = " 1 ";
-            //        i = 1;
-            //    } else
-            //        ctrlDisplay.Text += " 1 ";
-            //}
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-
-            }
-            ctrlDisplay.Text += " 1 ";
-
-            if (_value1 == null)
-            {
-                _value1 = 1;
-            }
-            else
-            {
-                _value2 = 1;
-            }
+        private void btnOne_Click(object sender, EventArgs e)
+        {
+            NewNumber(1);
+            ctrlDisplay.Text += "1";
         }
 
         private void btnTwo_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
+            NewNumber(2);
+            ctrlDisplay.Text += "2";
 
-            }
-            ctrlDisplay.Text += " 2 ";
-
-            if (_value1 == null)
-            {
-                _value1 = 2;
-            }
-            else
-            {
-                _value2 = 2;
-            }
         }
-
         private void btnThree_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
+            NewNumber(3);
+            ctrlDisplay.Text += "3";
 
-            }
-            ctrlDisplay.Text += " 3 ";
-
-            if (_value1 == null)
-            {
-                _value1 = 3;
-            }
-            else
-            {
-                _value2 = 3;
-            }
         }
         private void btnFour_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-
-            }
-            ctrlDisplay.Text += " 4 ";
-
-            if (_value1 == null)
-            {
-                _value1 = 4;
-            }
-            else
-            {
-                _value2 = 4;
-            }
+            NewNumber(4);
+            ctrlDisplay.Text += "4";
         }
 
         private void btnFive_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-
-            }
-            ctrlDisplay.Text += " 5 ";
-
-            if (_value1 == null)
-            {
-                _value1 = 5;
-            }
-            else
-            {
-                _value2 = 5;
-            }
+            NewNumber(5);
+            ctrlDisplay.Text += "5";
         }
+
         private void btnSix_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-
-            }
-            ctrlDisplay.Text += " 6 ";
-
-            if (_value1 == null)
-            {
-                _value1 = 6;
-            }
-            else
-            {
-                _value2 = 6;
-            }
+            NewNumber(1);
+            ctrlDisplay.Text += "6";
         }
+
         private void btnSeven_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-
-            }
-            ctrlDisplay.Text += " 7 ";
-
-            if (_value1 == null)
-            {
-                _value1 = 7;
-            }
-            else
-            {
-                _value2 = 7;
-            }
+            NewNumber(7);
+            ctrlDisplay.Text += "7";
         }
-        private void btnNine_Click(object sender, EventArgs e)
-        {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-
-            }
-            ctrlDisplay.Text += " 9 ";
-
-            if (_value1 == null)
-            {
-                _value1 = 9;
-            }
-            else
-            {
-                _value2 = 9;
-            }
-        }
-
-    
 
         private void btnEight_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-
-            }
-            ctrlDisplay.Text += " 8 ";
-
-            if (_value1 == null)
-            {
-                _value1 = 8;
-            }
-            else
-            {
-                _value2 = 8;
-            }
+            NewNumber(8);
+            ctrlDisplay.Text += "8";
 
         }
 
+        private void btnNine_Click(object sender, EventArgs e)
+        {
+            NewNumber(9);
+            ctrlDisplay.Text += "9";
+
+        }
+
+        private void btnZero_Click(object sender, EventArgs e)
+        {
+            NewNumber(0);
+            ctrlDisplay.Text += "0";
+        }
+        //method NewNumber
+        private void NewNumber(decimal? number)
+    {
+        if (_res != null)
+        {
+            ctrlDisplay.Text = string.Empty;
+            _x = null;
+            _y = null;
+            _res = null;
+            ctrlDisplay.Text = string.Empty;
+        }
+
+        if (_x == null)
+        {
+            _x = number;
+        }
+        else
+        {
+            _y = number;
+        }
+    }
+
         private void btnAddition_Click(object sender, EventArgs e)
         {
-            ctrlDisplay.Text += " + ";
+            ctrlDisplay.Text += "+";
             _calcOperation = CalcOperation.Addition;
-             
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            ctrlDisplay.Text += " - ";
+            ctrlDisplay.Text += "-";
             _calcOperation = CalcOperation.Subtraction;
         }
 
-        private void btnMultiply_Click(object sender, EventArgs e)
+        private void btnMulti_Click(object sender, EventArgs e)
         {
-            ctrlDisplay.Text += " * ";
+            ctrlDisplay.Text += "*";
             _calcOperation = CalcOperation.Multiplication;
+
         }
 
-        private void btnDivision_Click(object sender, EventArgs e)
+        private void btnDiv_Click(object sender, EventArgs e)
         {
             ctrlDisplay.Text += " / ";
-          _calcOperation = CalcOperation.Division;
+            _calcOperation = CalcOperation.Division;
 
 
         }
 
-        
-    }
-    }
-    
+        private void btnDot_Click(object sender, EventArgs e)
+        {
+            ctrlDisplay.Text += " . ";
+          
+
+        }
+
+        private void btnPower_Click(object sender, EventArgs e)
+        {
+
+            ctrlDisplay.Text += " 2X ";
+            _calcOperation = CalcOperation.RaiseToPower;
 
 
+
+
+        }
+
+        private void btnSqR_Click(object sender, EventArgs e)
+        {
+            ctrlDisplay.Text += " √ ";
+            _calcOperation = CalcOperation.SquareRoot;
+
+
+        }
+    }
+}
+
+    //    private void ctrlDisplay_TextChanged(object sender, EventArgs e)
+    //    {
+           
+    //}
