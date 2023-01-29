@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UniversityLib\UniversityLib.csproj" />
+    <ProjectReference Include="..\UniLib\UniLib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UniversityLib
+namespace UniLib
 {
-  
-        public class Institute
-        {   // properties
-        public Guid ID { get; set; }    
+    public class Institute
+    {
 
-        public string Name { get; set; }
+        // properties
+        public Guid ID { get; set; }
+
+        public string? Name { get; set; }
         public int YearsInService { get; set; }
 
         public Institute()
@@ -50,3 +51,6 @@ namespace UniversityLib
         }
     }
 }
+
+    
+

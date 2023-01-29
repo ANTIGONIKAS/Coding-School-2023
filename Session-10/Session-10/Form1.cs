@@ -1,68 +1,56 @@
-using UniversityLib;
+using UniLib;
 
 namespace Session_10
 {
-    public partial class form : Form
+    public partial class Form1 : Form
     {
-        public form()
+       public University university;
+       public List<Student> students { get; set; }
+       public List<Course> courses { get; set; }     
+       public List<Grade> grades { get; set; }     
+       public List<Schedule> scheduleCourses { get; set; }
+
+        public Form1()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            grvStudents.AutoGenerateColumns = false;
+
             List<Student> students = new List<Student>();
-            List<Course> courses = new List<Course>();
-            List<Grade> grades = new List<Grade>();
-
-            Student student1 = new Student()
-            {
-                Name = "Dimitris",
-                Age = 40,
-                RegistrationNumber = 1,
-
-
-            };
-
-
-            students.Add(student1);
-
-
-
-            Student student2 = new Student()
+            Student st1 = new Student()
             {
                 Name = "Antigoni",
+                Surname = "Kasioura",
                 Age = 39,
-                RegistrationNumber = 2,
-
+                RegistrationNumber = 123,
+                Gender= Student.GenderEnum.Female,
+                Undergraduate=true
             };
-            students.Add(student2);
+            students.Add(st1);
 
-            grvStudents.DataSource = students;
-            grvStudents.AutoGenerateColumns = false;
-
-
-            Course c1 = new Course()
+            Student st2 = new Student()
             {
-                Code = "123",
-                Subject = "History"
+                Name = "Dimitris",
+                Surname = "Raptodimos",
+                Age = 40,
+                RegistrationNumber = 124,
+                Gender =Student.GenderEnum.Male
             };
-
-            courses.Add(c1);
-
-            Course c2 = new Course()
-            {
-
-                Code = "124",
-                Subject = "Programming",
-            };
-            courses.Add(c2);
-            grvStudents.DataSource = courses;
+            students.Add(st2);
+            grvStudents.DataSource= students;
             grvStudents.AutoGenerateColumns = false;
+            DataGridViewComboBoxColumn colGender = grvStudents.Columns["colGender"] as DataGridViewComboBoxColumn;
+            colGender.Items.Add(Student.GenderEnum.Male);
+            colGender.Items.Add(Student.GenderEnum.Female);
+            colGender.Items.Add(Student.GenderEnum.Other);
         }
 
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-
-
-
