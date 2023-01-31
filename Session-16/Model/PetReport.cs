@@ -35,37 +35,40 @@ namespace F.Session_16.Model
         }
 
 
-        //    public List<string> CreatePetReport(List<Transaction> transactions, List<Pet> pets) {
-        //        int totalSoldBird = 0;
-        //        int totalSoldDog = 0;
-        //        int totalSoldCat = 0;
-        //        foreach (Transaction transaction in transactions) {
-        //            foreach(Pet pet in pets) {
-        //                switch (pet.AnimalType) {
-        //                    case AnimalTypeEnum.Bird:
-        //                        totalSoldBird++;
-        //                        break;
-        //                    case AnimalTypeEnum.Cat:
-        //                        totalSoldCat++;
-        //                        break;
-        //                    case AnimalTypeEnum.Dog:
-        //                        totalSoldDog++;
-        //                        break;                       
-        //                    default:
-        //                        //MessageBox.Show("Invalid Animal Type");//?
-        //                        break;
-        //                }
-        //            }                
-        //        }
-        //        List<string> petReport = new List<String>();
-        //        petReport.Add(ShowPetReport(AnimalTypeEnum.Bird, totalSoldBird));
-        //        petReport.Add(ShowPetReport(AnimalTypeEnum.Cat, totalSoldCat)); 
-        //        petReport.Add(ShowPetReport(AnimalTypeEnum.Dog, totalSoldDog));
-        //        return petReport;
-        //    }
+        public List<string> CreatePetReport(List<Transaction> transactions, List<Pet> pets)
+        {
+            int totalSoldBird = 0;
+            int totalSoldDog = 0;
+            int totalSoldCat = 0;
+            foreach (Transaction transaction in transactions)
+            {
+                foreach (Pet pet in pets)
+                {
+                    switch (pet.AnimalType)
+                    {
+                        case AnimalTypeEnum.Bird:
+                            totalSoldBird++;
+                            break;
+                        case AnimalTypeEnum.Cat:
+                            totalSoldCat++;
+                            break;
+                        case AnimalTypeEnum.Dog:
+                            totalSoldDog++;
+                            break;
+                        default:
+                            //MessageBox.Show("Invalid Animal Type");//?
+                            break;
+                    }
+                }
+            }
+            List<string> petReport = new List<String>();
+            petReport.Add(ShowPetReport(AnimalTypeEnum.Bird, totalSoldBird));
+            petReport.Add(ShowPetReport(AnimalTypeEnum.Cat, totalSoldCat));
+            petReport.Add(ShowPetReport(AnimalTypeEnum.Dog, totalSoldDog));
+            return petReport;
+        }
 
-
-        //}
 
     }
+
 }

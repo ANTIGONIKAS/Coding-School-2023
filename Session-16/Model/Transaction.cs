@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EF.Session_16.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Permissions;
@@ -19,6 +20,10 @@ namespace F.Session_16.Model
         public double PetFoodQty { get; set; }
         public double PetFoodPrice { get; set; }
         public double TotalPrice { get; set; }
+        public Pet Pet { get; set; } = null!;
+        public PetFood PetFood { get; set; } = null!;
+        public Customer Customer { get; set; } = null!;
+        public Employee Employee { get; set; } = null!;
 
         public Transaction() {
             TransactionID = Guid.NewGuid();

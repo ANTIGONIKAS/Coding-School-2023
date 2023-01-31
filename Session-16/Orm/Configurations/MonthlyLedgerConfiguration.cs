@@ -14,7 +14,13 @@ namespace EF_Session_16.Orm.Configurations
         public void Configure(EntityTypeBuilder<MonthlyLedger> builder)
         {
             builder.ToTable("MonthlyLedger");
-            builder.HasKey(monthlyLedger => monthlyLedger.Total);  //?
+            builder.HasKey(monthlyLedger => monthlyLedger.ID); 
+            builder.Property(monthlyLedger => monthlyLedger.Year).HasMaxLength(4); 
+            builder.Property(monthlyLedger => monthlyLedger.Month).HasMaxLength(2); 
+            builder.Property(monthlyLedger => monthlyLedger.Income).HasPrecision(20); //??
+            builder.Property(monthlyLedger => monthlyLedger.Expenses).HasPrecision(15); 
+            builder.Property(monthlyLedger => monthlyLedger.Total).HasPrecision(20); 
+
         }
     }
 }

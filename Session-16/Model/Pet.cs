@@ -1,5 +1,6 @@
 ﻿//using DevExpress.XtraScheduler.Outlook.Native;
 using EF.Session_16.Model;
+using F.Session_16.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,15 @@ namespace EF.Session_16.Model
 
 
         public Guid PetID { get; set; }
-        public string? Breed { get; set; }
+        public string Breed { get; set; } = null!;
         public AnimalTypeEnum AnimalType { get; set; }
         public PetStatusEnum Status { get; set; }
         public double Price { get; set; }
         public double Cost { get; set; }
+        public PetFood PetFood { get; set; }
+
+        public Transaction Transaction { get; set; } = null!;
+        public Guid TransactionID { get; set; }
 
         public Pet(Guid petID, string breed, AnimalTypeEnum animalType, PetStatusEnum status, double price, double cost)
         {

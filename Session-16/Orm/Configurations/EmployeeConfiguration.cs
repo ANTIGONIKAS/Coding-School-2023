@@ -15,6 +15,16 @@ namespace EF_Session_16.Orm.Configurations
         {
             builder.ToTable("Employee");
             builder.HasKey(employee=>employee.EmployeeID);
+            builder.Property(Employee => Employee.Name).HasMaxLength(10);
+            builder.Property(Employee => Employee.Surname).HasMaxLength(10);
+            builder.Property(Employee => Employee.SalaryPerMonth).HasPrecision(6);
+            builder.HasOne(employee => employee.Transaction);
+            //transaction id?
+            
+            
+            
+
+
 
 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using F.Session_16.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,18 @@ namespace EF.Session_16.Model {
 
         public Customer()
         {
-           //id = id;
+           
             CustomerID = Guid.NewGuid();
         }
 
         public Guid CustomerID { get; set; }
-        public string? Name { get; set; }
-        public string? Surname { get; set; }
-        public string Phone { get; set; }
-        public string?TIN { get; set; }
+        public string Name { get; set; } = null!;  //it is not null
+        public string Surname { get; set; } = null!;
+        public string Phone { get; set; } = null!;
+        public string TIN { get; set; } = null!;
+        public Transaction Transaction { get; set; } = null!;
+        public Guid TransactionID { get; set; }
+
 
         public string FullName {
             get {

@@ -16,6 +16,16 @@ namespace EF_Session_16.Orm.Configurations
         {
             builder.ToTable("Pet");
             builder.HasKey(pet => pet.PetID);
+           
+            builder.Property(pet => pet.Breed).HasMaxLength(15);
+            builder.Property(pet => pet.Status);
+            builder.Property(pet => pet.Cost).HasPrecision(5);
+            builder.Property(pet => pet.Price).HasPrecision(10);
+            builder.Property(pet => pet.PetFood);
+            builder.Property(pet => pet.Transaction.TransactionID); //?
+
+
+
         }
     }
 }

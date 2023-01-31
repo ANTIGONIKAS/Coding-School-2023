@@ -25,7 +25,8 @@ namespace F.Session_16.Model
         public string? Surname { get; set; }
         public double SalaryPerMonth { get; set; }
         public EmployeeTypeEnum EmployeeType { get; set; }
-
+        public Transaction Transaction { get; set; } = null!;
+        public Guid TransactionID { get; set; }
 
         public string FullName
         {

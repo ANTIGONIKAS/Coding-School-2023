@@ -15,6 +15,8 @@ namespace EF_Session_16.Orm.Configurations
         {
             builder.ToTable("PetReport");
             builder.HasKey(petReport=>petReport.ID); 
+            builder.Property(petReport=>petReport.Year); 
+            builder.Property(petReport=>petReport.TotalSold); 
 
         }
     }

@@ -10,6 +10,8 @@ using System.Xml.Schema;
 namespace F.Session_16.Model
 {
     public class MonthlyLedger {
+
+        public Guid ID { get; set; }
         public int Year { get; set; }        
         public int Month { get; set; }
         public double Income { get; set; }
@@ -23,7 +25,10 @@ namespace F.Session_16.Model
             Expenses = expenses;    
             Total = income - expenses;
         }
-
+        public MonthlyLedger()
+        {
+           ID = Guid.NewGuid();
+        }
         public string ShowMonthlyLedger() {
             string result = $"Year: {Year} Month: {Month} Income: {Income} Expenses: {Expenses} Total Profit: {Total}";
             return result;

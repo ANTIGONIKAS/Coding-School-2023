@@ -13,7 +13,12 @@ namespace F.Session_16.Model
         public AnimalTypeEnum AnimalType { get; set; }
 
         public double PetFoodPrice { get; set; }
-        public double Cost { get; set; }
+        public double PetFoodCost { get; set; }
+        public Transaction Transaction { get; set; } = null!;
+        public Guid TransactionID { get; set; }
+        public Guid PetID { get; set; }
+        public Pet Pet { get; set; }
+
         public enum AnimalTypeEnum
         {
             Bird,
@@ -22,12 +27,13 @@ namespace F.Session_16.Model
             None
         }
 
-        //public PetFood(Guid petFoodID,AnimalTypeEnum animalType, double petFoodPrice, double petFoodCost) {
-        //    PetFoodID= petFoodID;   
-        //    AnimalType= animalType;
-        //    PetFoodPrice = petFoodPrice;    
-        //    PetFoodCost = petFoodCost;  
-        //}
+        public PetFood(Guid petFoodID, AnimalTypeEnum animalType, double petFoodPrice, double petFoodCost)
+        {
+            PetFoodID = petFoodID;
+            AnimalType = animalType;
+            PetFoodPrice = petFoodPrice;
+            PetFoodCost = petFoodCost;
+        }
         public PetFood()
         {
             PetFoodID= Guid.NewGuid();
