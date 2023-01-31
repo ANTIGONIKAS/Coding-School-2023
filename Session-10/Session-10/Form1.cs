@@ -17,8 +17,16 @@ namespace Session_10
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            grvStudents.AutoGenerateColumns = false;
+              PopulateStudents();
+              SetControlProperties();
+              PopulateCourses();
+              PopulateGrades();
 
+
+            
+        }
+        public void PopulateStudents()
+        {
             List<Student> students = new List<Student>();
             Student st1 = new Student()
             {
@@ -26,8 +34,8 @@ namespace Session_10
                 Surname = "Kasioura",
                 Age = 39,
                 RegistrationNumber = 123,
-                Gender= Student.GenderEnum.Female,
-                Undergraduate=true
+                Gender = Student.GenderEnum.Female,
+                Undergraduate = true
             };
             students.Add(st1);
 
@@ -37,15 +45,66 @@ namespace Session_10
                 Surname = "Raptodimos",
                 Age = 40,
                 RegistrationNumber = 124,
-                Gender =Student.GenderEnum.Male
+                Gender = Student.GenderEnum.Male
             };
             students.Add(st2);
-            grvStudents.DataSource= students;
             grvStudents.AutoGenerateColumns = false;
+            grvStudents.DataSource = students;
+
+
+        }
+        public void PopulateCourses()
+        {
+            List<Course> courses = new List<Course>();
+            Course c1 = new Course()
+            {
+
+                
+                Subject = "Mathematics"
+
+            };
+            courses.Add(c1);
+
+            Course c2 = new Course()
+            {
+                
+                Subject = "Programming"
+            };
+            courses.Add(c2);
+
+            
+        }
+        public void PopulateGrades()
+        {
+            List<Grade> grades = new List<Grade>();
+            Grade grade = new Grade()
+            {
+
+                StudentID = university.Students[0].ID,
+                CourseID = university.Courses[0].ID,
+                GradeVal = 8
+            };
+            grades.Add(grade);
+
+            grade = new Grade()
+            {
+                StudentID = university.Students[0].ID,
+                CourseID = university.Courses[1].ID,
+                GradeVal = 7
+            };
+            grades.Add(grade);
+
+            grvGrades.DataSource = grades;
+
+        }
+        private void SetControlProperties()
+        {
             DataGridViewComboBoxColumn colGender = grvStudents.Columns["colGender"] as DataGridViewComboBoxColumn;
             colGender.Items.Add(Student.GenderEnum.Male);
             colGender.Items.Add(Student.GenderEnum.Female);
             colGender.Items.Add(Student.GenderEnum.Other);
+            grvStudents.AutoGenerateColumns = false;
+            grvCourses.DataSource = courses;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -53,4 +112,6 @@ namespace Session_10
 
         }
     }
+      
 }
+

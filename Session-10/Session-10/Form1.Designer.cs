@@ -35,7 +35,13 @@
             this.colUndergraduate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colGender = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnOK = new System.Windows.Forms.Button();
+            this.grvCourses = new System.Windows.Forms.DataGridView();
+            this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grvGrades = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.grvStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvCourses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvGrades)).BeginInit();
             this.SuspendLayout();
             // 
             // grvStudents
@@ -47,10 +53,10 @@
             this.colAge,
             this.colUndergraduate,
             this.colGender});
-            this.grvStudents.Location = new System.Drawing.Point(12, 25);
+            this.grvStudents.Location = new System.Drawing.Point(12, 21);
             this.grvStudents.Name = "grvStudents";
             this.grvStudents.RowTemplate.Height = 25;
-            this.grvStudents.Size = new System.Drawing.Size(519, 248);
+            this.grvStudents.Size = new System.Drawing.Size(482, 236);
             this.grvStudents.TabIndex = 0;
             // 
             // colName
@@ -92,7 +98,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(456, 297);
+            this.btnOK.Location = new System.Drawing.Point(419, 283);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 29);
             this.btnOK.TabIndex = 1;
@@ -100,17 +106,54 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // grvCourses
+            // 
+            this.grvCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvCourses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colCode,
+            this.colSubject});
+            this.grvCourses.Location = new System.Drawing.Point(718, 52);
+            this.grvCourses.Name = "grvCourses";
+            this.grvCourses.RowTemplate.Height = 25;
+            this.grvCourses.Size = new System.Drawing.Size(360, 188);
+            this.grvCourses.TabIndex = 2;
+            // 
+            // colCode
+            // 
+            this.colCode.DataPropertyName = "Code";
+            this.colCode.HeaderText = "Code";
+            this.colCode.Name = "colCode";
+            // 
+            // colSubject
+            // 
+            this.colSubject.DataPropertyName = "Subject";
+            this.colSubject.HeaderText = "Subject";
+            this.colSubject.Name = "colSubject";
+            // 
+            // grvGrades
+            // 
+            this.grvGrades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvGrades.Location = new System.Drawing.Point(63, 341);
+            this.grvGrades.Name = "grvGrades";
+            this.grvGrades.RowTemplate.Height = 25;
+            this.grvGrades.Size = new System.Drawing.Size(327, 196);
+            this.grvGrades.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1318, 655);
+            this.Controls.Add(this.grvGrades);
+            this.Controls.Add(this.grvCourses);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.grvStudents);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grvStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvCourses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvGrades)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -124,5 +167,9 @@
         private DataGridViewCheckBoxColumn colUndergraduate;
         private DataGridViewComboBoxColumn colGender;
         private Button btnOK;
+        private DataGridView grvCourses;
+        private DataGridViewTextBoxColumn colCode;
+        private DataGridViewTextBoxColumn colSubject;
+        private DataGridView grvGrades;
     }
 }
