@@ -1,6 +1,5 @@
 ﻿
-using EF.Session_16.Model;
-using F.Session_16.Model;
+using Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EF_Session_16.Orm.Configurations
+namespace Orm.Configurations
 {
     public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     {
@@ -18,9 +17,9 @@ namespace EF_Session_16.Orm.Configurations
             builder.ToTable("Customer");
             builder.HasKey(customer => customer.CustomerID);  //einai swsto?mporw na to xrhsimopoihsw san primary key?
             builder.Property(customer => customer.Phone).HasMaxLength(20).IsRequired(true);
-            builder.Property(customer => customer.Name).HasMaxLength(15).IsRequired(true);
-            builder.Property(customer => customer.Surname).HasMaxLength(15).IsRequired(true);
-            builder.Property(customer => customer.TIN).HasMaxLength(15).IsRequired(true);
+            builder.Property(customer => customer.CustomerName).HasMaxLength(20).IsRequired(true);
+            builder.Property(customer => customer.CustomerSurname).HasMaxLength(20).IsRequired(true);
+            builder.Property(customer => customer.TIN).HasMaxLength(20).IsRequired(true);
             builder.HasOne(customer => customer.Transaction).WithOne(transaction => transaction.Customer)
                     .HasForeignKey<Transaction>(customer => customer.CustomerID);
 

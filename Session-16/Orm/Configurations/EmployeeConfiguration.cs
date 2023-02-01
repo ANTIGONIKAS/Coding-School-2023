@@ -1,4 +1,4 @@
-﻿using F.Session_16.Model;
+﻿using Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -15,11 +15,12 @@ namespace EF_Session_16.Orm.Configurations
         {
             builder.ToTable("Employee");
             builder.HasKey(employee=>employee.EmployeeID);
-            builder.Property(Employee => Employee.Name).HasMaxLength(10);
-            builder.Property(Employee => Employee.Surname).HasMaxLength(10);
+            builder.Property(Employee => Employee.EmployeeName).HasMaxLength(10);
+            builder.Property(Employee => Employee.EmployeeSurname).HasMaxLength(10);
             builder.Property(Employee => Employee.SalaryPerMonth).HasPrecision(6);
-            builder.HasOne(employee => employee.Transaction);
-            //transaction id?
+            builder.HasOne(employee => employee.Transaction).WithOne(transaction => transaction.Employee)
+                .HasForeignKey<Employee>(employee => employee.TransactionID);
+            
             
             
             

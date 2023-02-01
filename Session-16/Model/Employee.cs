@@ -22,8 +22,8 @@ namespace Model
             Staff
         }
         public Guid EmployeeID { get; set; }
-        public string CustomerName { get; set; } = null!;
-        public string CustomerSurname { get; set; } = null!;
+        public string EmployeeName { get; set; } = null!;
+        public string EmployeeSurname { get; set; } = null!;
         public double SalaryPerMonth { get; set; }
         public EmployeeTypeEnum EmployeeType { get; set; }
         public Transaction Transaction { get; set; } = null!;

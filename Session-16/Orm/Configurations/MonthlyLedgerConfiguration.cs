@@ -1,4 +1,4 @@
-﻿using F.Session_16.Model;
+﻿using Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -14,7 +14,7 @@ namespace EF_Session_16.Orm.Configurations
         public void Configure(EntityTypeBuilder<MonthlyLedger> builder)
         {
             builder.ToTable("MonthlyLedger");
-            builder.HasKey(monthlyLedger => monthlyLedger.ID); 
+            builder.HasKey(monthlyLedger => monthlyLedger.MonthlyLedID); 
             builder.Property(monthlyLedger => monthlyLedger.Year).HasMaxLength(4); 
             builder.Property(monthlyLedger => monthlyLedger.Month).HasMaxLength(2); 
             builder.Property(monthlyLedger => monthlyLedger.Income).HasPrecision(20); //??
