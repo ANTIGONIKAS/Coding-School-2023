@@ -1,11 +1,12 @@
-﻿using EF.Session_16.Model;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
-namespace F.Session_16.Model
+namespace Model
 {
     public class Employee
     {
@@ -21,29 +22,18 @@ namespace F.Session_16.Model
             Staff
         }
         public Guid EmployeeID { get; set; }
-        public string? Name { get; set; }
-        public string? Surname { get; set; }
+        public string CustomerName { get; set; } = null!;
+        public string CustomerSurname { get; set; } = null!;
         public double SalaryPerMonth { get; set; }
         public EmployeeTypeEnum EmployeeType { get; set; }
         public Transaction Transaction { get; set; } = null!;
         public Guid TransactionID { get; set; }
 
-        public string FullName
-        {
-            get
-            {
-                return String.Format("{0} {1}", Name, Surname);
-            }
-        }
+       
 
 
 
-        public Employee(Guid employeeID, String name, String surname, double salaryPerMonth, EmployeeTypeEnum employeeType) 
-        {
-            EmployeeID = employeeID;
-            SalaryPerMonth = salaryPerMonth;
-            EmployeeType = employeeType;
-        }
+      
 
 
     }

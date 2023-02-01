@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 
-namespace F.Session_16.Model
+namespace Model
 {
     public class MonthlyLedger {
 
-        public Guid ID { get; set; }
+        public Guid MonthlyLedID { get; set; }
         public int Year { get; set; }        
         public int Month { get; set; }
         public double Income { get; set; }
@@ -27,7 +27,7 @@ namespace F.Session_16.Model
         }
         public MonthlyLedger()
         {
-           ID = Guid.NewGuid();
+          MonthlyLedID = Guid.NewGuid();
         }
         public string ShowMonthlyLedger() {
             string result = $"Year: {Year} Month: {Month} Income: {Income} Expenses: {Expenses} Total Profit: {Total}";

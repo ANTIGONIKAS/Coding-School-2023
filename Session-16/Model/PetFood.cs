@@ -1,23 +1,24 @@
-﻿using EF.Session_16.Model;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
-namespace F.Session_16.Model
+namespace Model
 {
     public class PetFood
     {
         public Guid PetFoodID { get; set; } 
         public AnimalTypeEnum AnimalType { get; set; }
 
-        public double PetFoodPrice { get; set; }
-        public double PetFoodCost { get; set; }
+        public decimal PetFoodPrice { get; set; }
+        public decimal PetFoodCost { get; set; }
         public Transaction Transaction { get; set; } = null!;
         public Guid TransactionID { get; set; }
         public Guid PetID { get; set; }
-        public Pet Pet { get; set; }
+        public Pet Pet { get; set; } = null!;
 
         public enum AnimalTypeEnum
         {
@@ -27,13 +28,6 @@ namespace F.Session_16.Model
             None
         }
 
-        public PetFood(Guid petFoodID, AnimalTypeEnum animalType, double petFoodPrice, double petFoodCost)
-        {
-            PetFoodID = petFoodID;
-            AnimalType = animalType;
-            PetFoodPrice = petFoodPrice;
-            PetFoodCost = petFoodCost;
-        }
         public PetFood()
         {
             PetFoodID= Guid.NewGuid();
