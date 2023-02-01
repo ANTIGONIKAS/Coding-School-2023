@@ -3,7 +3,7 @@ Session-17 Answers
 
 1. Προσθέτουμε μια διεύθυνση url με key1?=value και ζητάμε ένα http head για αυτό.
 
-2. θΑ ΠΑΡΩ text/html; charset=utf-8
+2. θΑ ΠΑΡΩ image/jpeg
 
 3.H cashe είναι ένα μέρος όπου ο browser κρατάει αρχεία είκονες κωδικούς αποφεύγοντας το επαναλαμβανόμενο download.
 
