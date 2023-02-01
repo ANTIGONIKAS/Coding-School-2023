@@ -18,8 +18,7 @@ namespace EF_Session_16.Orm.Configurations
             builder.Property(Employee => Employee.EmployeeName).HasMaxLength(10);
             builder.Property(Employee => Employee.EmployeeSurname).HasMaxLength(10);
             builder.Property(Employee => Employee.SalaryPerMonth).HasPrecision(6);
-            builder.HasOne(employee => employee.Transaction).WithOne(transaction => transaction.Employee)
-                .HasForeignKey<Employee>(employee => employee.TransactionID);
+           
             
             
             

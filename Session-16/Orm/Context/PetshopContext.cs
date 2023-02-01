@@ -1,7 +1,6 @@
 ﻿
-using EF.Session_16.Model;
+using Model;
 using EF_Session_16.Orm.Configurations;
-using F.Session_16.Model;
 using Microsoft.EntityFrameworkCore;
 using Orm.Configurations;
 using System;
@@ -11,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace EF_Session_16.Orm.Context
+namespace Orm.Context
 {
     public class  PetShopContext : DbContext
     {
@@ -41,7 +40,7 @@ namespace EF_Session_16.Orm.Context
             base.OnModelCreating(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {     optionsBuilder.UseSqlServer("Data source = (localdb)\\MSSQLLocalDB; initial catalog = AdventureWorks2019; integrated security = SSPI; TrustServerCertificate = True");
+        {     optionsBuilder.UseSqlServer("Data source = (localdb)\\MSSQLLocalDB; initial catalog = PetShopDB; integrated security = SSPI; TrustServerCertificate = True");
             base.OnConfiguring(optionsBuilder);
 
         }

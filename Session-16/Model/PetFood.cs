@@ -18,7 +18,7 @@ namespace Model
         public Transaction Transaction { get; set; } = null!;
         public Guid TransactionID { get; set; }
         public Guid PetID { get; set; }
-        public Pet Pet { get; set; } = null!;
+      //  public Pet Pet { get; set; } = null!;
 
         public enum AnimalTypeEnum
         {

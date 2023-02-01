@@ -21,8 +21,8 @@ namespace Orm.Configurations
             builder.Property(pet => pet.PetStatus);
             builder.Property(pet => pet.Cost).HasPrecision(5);
             builder.Property(pet => pet.Price).HasPrecision(10);
-            builder.Property(pet => pet.PetFood);
-            builder.Property(pet => pet.Transaction.TransactionID); 
+          //  builder.Property(pet => pet.PetFood);
+           
 
 
 

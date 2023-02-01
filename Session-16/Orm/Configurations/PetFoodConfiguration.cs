@@ -18,9 +18,11 @@ namespace Orm.Configurations
             builder.HasKey(petfood => petfood.PetFoodID);
             builder.Property(petfood => petfood.PetFoodPrice).HasPrecision(4);
             builder.Property(petfood => petfood.PetFoodCost).HasPrecision(4);
-            builder.Property(petfood => petfood.Transaction.TransactionID);
+           // builder.Property(petfood => petfood.Transaction);
             builder.Property(petfood => petfood.PetID);
-            builder.Property(petfood => petfood.Pet);
+            //builder.Property(petfood => petfood);
+            builder.HasOne(petfood => petfood.Transaction).WithMany(Transaction => Transaction.PetFoods).HasForeignKey(transaction=>transaction.TransactionID);
+
 
 
         }

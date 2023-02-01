@@ -20,8 +20,7 @@ namespace Orm.Configurations
             builder.Property(customer => customer.CustomerName).HasMaxLength(20).IsRequired(true);
             builder.Property(customer => customer.CustomerSurname).HasMaxLength(20).IsRequired(true);
             builder.Property(customer => customer.TIN).HasMaxLength(20).IsRequired(true);
-            builder.HasOne(customer => customer.Transaction).WithOne(transaction => transaction.Customer)
-                    .HasForeignKey<Transaction>(customer => customer.CustomerID);
+            
 
 
 

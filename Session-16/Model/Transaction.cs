@@ -21,7 +21,7 @@ namespace Model
         public double PetFoodPrice { get; set; }
         public decimal TotalPrice { get; set; }
         public Pet Pet { get; set; } = null!;
-        public PetFood PetFood { get; set; } = null!;
+        public List<PetFood> PetFoods { get; set; } = null!;
         public Customer Customer { get; set; } = null!;
         public Employee Employee { get; set; } = null!;
 
