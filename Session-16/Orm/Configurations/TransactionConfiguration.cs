@@ -17,21 +17,34 @@ namespace EF_Session_16.Orm.Configurations
 
 
           builder.HasKey(transaction => transaction.TransactionID);
-          builder.Property(transaction => transaction.TransactionID).ValueGeneratedOnAdd();
+          builder.Property(transaction => transaction.TransactionID);
           builder.Property(transaction => transaction.TransactionDate);
           builder.Property(transaction => transaction.PetPrice).HasPrecision(10);
-          builder.Property(transaction => transaction.PetFoodID);
-            builder.Property(transaction => transaction.PetFoodPrice).HasPrecision(8);
+     
+           
             builder.Property(transaction => transaction.TotalPrice).HasPrecision(10);
             builder.Property(transaction => transaction.CustomerID);
             builder.Property(transaction => transaction.EmployeeID);
-       //     builder.Property(transaction => transaction.PetFoods);
-            builder.Property(transaction => transaction.PetFoodQty);
             builder.Property(transaction => transaction.PetID);
+            builder.Property(transaction => transaction.PetFood);
+            builder.Property(transaction => transaction.PetFoodID);
+
+            builder.Property(transaction => transaction.TransactionLines);
+
+
+                   //Relations OneToOne
+                   //customer
             builder.HasOne(transaction => transaction.Customer).WithOne(customer => customer.Transaction)
                     .HasForeignKey<Transaction>(customer => customer.CustomerID);
+                  //employee
             builder.HasOne(transaction => transaction.Employee).WithOne(employee => employee.Transaction)
-                           .HasForeignKey<Employee>(employee => employee.TransactionID);
+                           .HasForeignKey<Employee>(employee => employee.EmployeeID);
+                 //pet
+            builder.HasOne(transaction => transaction.Pet).WithOne(pet => pet.Transaction)
+                          .HasForeignKey<Pet>(pet => pet.PetID);
+
+            builder.HasOne(transaction => transaction.PetFood).WithOne(petFood => petFood.Transaction).HasForeignKey<PetFood>(petfood => petfood.PetFoodID);
+
 
 
 

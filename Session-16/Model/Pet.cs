@@ -11,7 +11,11 @@ namespace Model
 {
     public class Pet
     {
-      
+        public Pet()
+        {
+            PetID = Guid.NewGuid();
+        }
+
 
         public enum AnimalType
         {
@@ -28,22 +32,21 @@ namespace Model
         }
 
         public Guid PetID { get; set; }
+
+        //Relations
+       public Transaction Transaction { get; set; } = null!;
+        public Guid TransactionID { get; set; }
+
         public string Breed { get; set; } = null!;
         public AnimalType PetType { get; set; }
         public AnimalStatus PetStatus { get; set; }
         public decimal Price { get; set; }
         public decimal Cost { get; set; }
-       // public PetFood PetFood { get; set; } = null!;
-      //  public PetFood PetFoodID { get; set; } 
+      
 
-        //public Transaction Transaction { get; set; } = null!;
-        //public Guid TransactionID { get; set; }
+       
 
-
-        public Pet()
-        {
-            PetID = Guid.NewGuid();
-        }
+       
 
 
 

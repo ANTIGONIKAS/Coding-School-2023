@@ -18,10 +18,11 @@ namespace Orm.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Pet> Pets { get; set; }
         public DbSet<PetFood> PetFoods { get; set; }
-        public DbSet<Transaction> Trancactions { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
         public DbSet<MonthlyLedger> MonthlyLedgers { get; set; }
         public DbSet<PetReport> PetReports { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<TransactionLine> TransactionsLine { get; set; }
+      
        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -30,13 +31,12 @@ namespace Orm.Context
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new PetConfiguration());
             modelBuilder.ApplyConfiguration(new PetFoodConfiguration());
-         
-            modelBuilder.ApplyConfiguration(new TransactionConfiguration());
             modelBuilder.ApplyConfiguration(new MonthlyLedgerConfiguration());
             modelBuilder.ApplyConfiguration(new PetReportConfiguration());
+            modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+            modelBuilder.ApplyConfiguration(new TransactionLineConfiguration());
 
 
-            
             base.OnModelCreating(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
