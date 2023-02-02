@@ -15,10 +15,10 @@ namespace Model
 
         public decimal PetFoodPrice { get; set; }
         public decimal PetFoodCost { get; set; }
-        public Transaction Transaction { get; set; } = null!;
-        public Guid TransactionID { get; set; }
+        public TransactionLine TransactionLine { get; set; } = null!;
+        public Guid TransactionLineID { get; set; }
         public Guid PetID { get; set; }
-      //  public Pet Pet { get; set; } = null!;
+         public Pet Pet { get; set; } = null!;
 
         public enum AnimalTypeEnum
         {

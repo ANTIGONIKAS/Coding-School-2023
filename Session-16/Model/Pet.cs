@@ -34,8 +34,8 @@ namespace Model
         public Guid PetID { get; set; }
 
         //Relations
-       public Transaction Transaction { get; set; } = null!;
-        public Guid TransactionID { get; set; }
+       public TransactionLine TransactionLine { get; set; } 
+        public Guid TransactionLineID { get; set; }
 
         public string Breed { get; set; } = null!;
         public AnimalType PetType { get; set; }

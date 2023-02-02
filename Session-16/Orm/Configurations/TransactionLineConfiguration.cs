@@ -24,16 +24,26 @@ namespace Orm.Configurations
             builder.Property(transactionLine => transactionLine.PetFoodCost);
             builder.Property(transactionLine => transactionLine.PriceDiscount);
             builder.Property(transactionLine => transactionLine.LineTotal);
-         
-           
+            builder.Property(transaction => transaction.PetID);
+            builder.Property(transaction => transaction.PetFood);
+            builder.Property(transaction => transaction.PetFoodID);
+            builder.Property(pet => pet.PetID);
+
+
+
 
             //Relation OneToMany
 
             //list
             builder.HasOne(transactionLine => transactionLine.Transaction).WithMany(transaction => transaction.TransactionLines)
                 .HasForeignKey(transactionLine => transactionLine.TransactionID);
-           
 
+            //Relation OneToOne
+
+            builder.HasOne(transactionLine => transactionLine.Pet).WithOne(pet => pet.TransactionLine)
+                         .HasForeignKey<Pet>(pet => pet.PetID);
+
+            builder.HasOne(transactionLine => transactionLine.PetFood).WithOne(petFood => petFood.TransactionLine).HasForeignKey<PetFood>(petfood => petfood.PetFoodID);
 
 
         }

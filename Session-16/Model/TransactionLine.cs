@@ -19,8 +19,12 @@ namespace Model
               //Relations
         public Transaction Transaction { get; set; } = null!;   
         public Guid TransactionID { get; set;} //foreignkey
+        public Pet Pet { get; set; } = null!;
+        public Guid PetID { get; set; } //FK
 
-        
+        public PetFood PetFood { get; set; } = null!; //foreignkey
+        public Guid PetFoodID { get; set; }
+
         public int PetFoodQty { get; set; }
         public Guid SpecialOfferID { get; set; } 
         public decimal PetFoodPrice { get; set; }   

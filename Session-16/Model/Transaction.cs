@@ -18,6 +18,7 @@ namespace Model;
 
         //inialize list
         TransactionLines = new List<TransactionLine>();
+        Customers= new List<Customer>();
         
 
       }
@@ -31,16 +32,13 @@ namespace Model;
         public Guid CustomerID { get; set; }  //FK
         public Employee Employee { get; set; } = null!; 
         public Guid EmployeeID { get; set; }   //FK
-        public Pet Pet { get; set; } = null!;
-        public Guid PetID { get; set; } //FK
-
-        public PetFood PetFood { get; set; } = null!; //foreignkey
-        public Guid PetFoodID { get; set; }
+       
         public decimal PetPrice { get; set; }
         public decimal TotalPrice { get; set; }
        
              //Relations
         public List<TransactionLine> TransactionLines { get; set; }
+        public List<Customer> Customers{ get; set; }
         
         
      
