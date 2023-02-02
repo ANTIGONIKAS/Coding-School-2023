@@ -21,7 +21,7 @@ namespace Orm.Context
         public DbSet<MonthlyLedger> MonthlyLedgers { get; set; }
         public DbSet<PetReport> PetReports { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<TransactionLine> TransactionsLine { get; set; }
+        public DbSet<TransactionLine> TransactionsLines { get; set; }
       
        
 
