@@ -8,14 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 
-//public Guid TransactionLineID { get; set; } //pk
-//public int PetFoodQty { get; set; }
-//public Guid PetFoodID { get; set; } //foreignkey
-//public Guid SpecialOfferID { get; set; } //fk
-//public decimal PetFoodPrice { get; set; }
-//public decimal PetFoodCost { get; set; }
-//public decimal PriceDiscount { get; set; }
-//public decimal LineTotal { get; set; }
 
 
 namespace Orm.Configurations
@@ -32,7 +24,7 @@ namespace Orm.Configurations
             builder.Property(transactionLine => transactionLine.PetFoodCost);
             builder.Property(transactionLine => transactionLine.PriceDiscount);
             builder.Property(transactionLine => transactionLine.LineTotal);
-         //   builder.Property(transactionLine => transactionLine.PetFoodID);
+         
            
 
             //Relation OneToMany

@@ -12,12 +12,14 @@ namespace Model {
         {
            
             CustomerID = Guid.NewGuid();
+            Transactions= new List<Transaction>();
         }
 
         public Guid CustomerID { get; set; }
+        public Transaction Transaction { get; set; }
 
                //Relations
-        public Transaction Transaction { get; set; } = null!;
+        public List<Transaction> Transactions { get; set; } 
         public Guid TransactionID { get; set; }   
         
         public string CustomerName { get; set; } = null!;  //it is not null

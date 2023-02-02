@@ -24,6 +24,7 @@ namespace Model;
         //PROPERTIES
     
         public Guid TransactionID { get; set; } //PK
+    
         public DateTime TransactionDate { get; set; }
 
         public Customer Customer { get; set; } = null!;

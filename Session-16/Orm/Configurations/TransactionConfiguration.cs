@@ -41,12 +41,14 @@ namespace EF_Session_16.Orm.Configurations
                            .HasForeignKey<Employee>(employee => employee.EmployeeID);
                  //pet
             builder.HasOne(transaction => transaction.Pet).WithOne(pet => pet.Transaction)
-                          .HasForeignKey<Pet>(pet => pet.PetID);
+                          .HasForeignKey<Pet>(pet => pet.PetID);//?line
 
             builder.HasOne(transaction => transaction.PetFood).WithOne(petFood => petFood.Transaction).HasForeignKey<PetFood>(petfood => petfood.PetFoodID);
 
+            //OneToMany Customer...transactions
 
-
+            builder.HasOne(transaction => transaction.Customer).WithMany(customer => customer.Transactions).
+                HasForeignKey(transaction => transaction.CustomerID);
 
 
 
