@@ -14,6 +14,7 @@ namespace Model
         public Pet()
         {
             PetID = Guid.NewGuid();
+           
         }
 
 
@@ -34,19 +35,20 @@ namespace Model
         public Guid PetID { get; set; }
 
         //Relations
-       public TransactionLine TransactionLine { get; set; } 
-        public Guid TransactionLineID { get; set; }
-
+ 
         public string Breed { get; set; } = null!;
         public AnimalType PetType { get; set; }
         public AnimalStatus PetStatus { get; set; }
-        public decimal Price { get; set; }
-        public decimal Cost { get; set; }
-      
+        public double Price { get; set; }
+        public double Cost { get; set; }
 
-       
+        //Relations
+        public Transaction Transaction { get; set; } = null!;
+        public Guid TransactionID { get; set; }
 
-       
+
+
+
 
 
 
@@ -55,8 +57,8 @@ namespace Model
 
     }
 
-           
-        }
+
+}
 
 
 

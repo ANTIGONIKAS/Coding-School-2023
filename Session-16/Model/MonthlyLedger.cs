@@ -12,25 +12,18 @@ namespace Model
     public class MonthlyLedger {
 
         public Guid MonthlyLedID { get; set; }
-        public int Year { get; set; }        
+        public int Year { get; set; }   //ReadOnly     
         public int Month { get; set; }
         public double Income { get; set; }
         public double Expenses { get; set; }
-        public double Total { get; set; }        
+        public double TotalSold { get; set; }        
 
-        public MonthlyLedger(int year, int month, double income, double expenses) {
-            Year = year;    
-            Month = month;  
-            Income = income;    
-            Expenses = expenses;    
-            Total = income - expenses;
-        }
         public MonthlyLedger()
         {
           MonthlyLedID = Guid.NewGuid();
         }
         public string ShowMonthlyLedger() {
-            string result = $"Year: {Year} Month: {Month} Income: {Income} Expenses: {Expenses} Total Profit: {Total}";
+            string result = $"Year: {Year} Month: {Month} Income: {Income} Expenses: {Expenses} Total Profit: {TotalSold}";
             return result;
         }
     }

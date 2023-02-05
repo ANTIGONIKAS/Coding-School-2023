@@ -15,14 +15,15 @@ namespace Orm.Configurations
         {
             //tha ftiaxei ena pinaka customers
             builder.ToTable("Customer");
-            builder.HasKey(customer => customer.CustomerID);  //einai swsto?mporw na to xrhsimopoihsw san primary key?
+            builder.HasKey(customer => customer.CustomerID);  
             builder.Property(customer => customer.Phone).HasMaxLength(20).IsRequired(true);
-            builder.Property(customer => customer.CustomerName).HasMaxLength(20).IsRequired(true);
-            builder.Property(customer => customer.CustomerSurname).HasMaxLength(20).IsRequired(true);
-            builder.Property(customer => customer.TIN).HasMaxLength(20).IsRequired(true);
-            
-           builder.HasOne(customer=>customer.Transaction).WithMany(transaction=>transaction.Customers).HasForeignKey(transaction => transaction.CustomerID);
+            builder.Property(customer => customer.CustomerName).HasMaxLength(12).IsRequired(true);
+            builder.Property(customer => customer.CustomerSurname).HasMaxLength(12).IsRequired(true);
+            builder.Property(customer => customer.TIN).HasMaxLength(10).IsRequired(true);
 
+
+
+         
 
 
         }

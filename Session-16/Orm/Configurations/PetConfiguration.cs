@@ -19,8 +19,8 @@ namespace Orm.Configurations
            
             builder.Property(pet => pet.Breed).HasMaxLength(20);
             builder.Property(pet => pet.PetStatus);
-            builder.Property(pet => pet.Cost).HasPrecision(5);
-            builder.Property(pet => pet.Price).HasPrecision(10);
+            builder.Property(pet => pet.Cost).HasPrecision(10, 2);
+            builder.Property(pet => pet.Price).HasPrecision(10, 2);
           
            
 

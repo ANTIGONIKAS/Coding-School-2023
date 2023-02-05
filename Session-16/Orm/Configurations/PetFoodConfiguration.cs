@@ -16,11 +16,12 @@ namespace Orm.Configurations
          builder.ToTable("PetFood");
 
             builder.HasKey(petfood => petfood.PetFoodID);
-            builder.Property(petfood => petfood.PetFoodPrice).HasPrecision(10);
-            builder.Property(petfood => petfood.PetFoodCost).HasPrecision(10);
-            builder.Property(petfood => petfood.TransactionLine);
-            builder.Property(petfood => petfood.PetID);
-            builder.Property(petfood => petfood);
+           
+            builder.Property(petfood => petfood.PetFoodPrice).HasPrecision(10,2);
+            builder.Property(petfood => petfood.PetFoodCost).HasPrecision(10, 2);
+          
+        
+           
        
 
 

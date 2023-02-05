@@ -8,35 +8,43 @@ namespace Model
 {
     public class TransactionLine
     {
-        public TransactionLine() { 
+        public TransactionLine() {
 
         TransactionLineID=Guid.NewGuid();
-       
-
+            
         }
-        public Guid TransactionLineID {get; set;} //primarykey
+        //properties
+        public Guid TransactionLineID { get; set;} //primarykey
 
-              //Relations
-        public Transaction Transaction { get; set; } = null!;   
+        //Relations
+
+        public Transaction Transastion { get; set; } = null!;
         public Guid TransactionID { get; set;} //foreignkey
-        public Pet Pet { get; set; } = null!;
-        public Guid PetID { get; set; } //FK
 
-        public PetFood PetFood { get; set; } = null!; //foreignkey
+        public PetFood PetFood { get; set; } = null!;
         public Guid PetFoodID { get; set; }
 
-        public int PetFoodQty { get; set; }
-        public Guid SpecialOfferID { get; set; } 
-        public decimal PetFoodPrice { get; set; }   
-        public decimal PetFoodCost { get; set; }
-        public decimal PriceDiscount { get; set; }
-        public decimal LineTotal { get; set; }
+        public Pet Pet { get; set; } =null!;
 
-       
+        public Guid PetID { get; set; }
+        public SpecialOffer SpecialOffer { get; set; } = null!;
 
-      
-        //LineTotal=PetPrice-PetFoodPrice
-        //PetFoodPrice=PetFoodQty *PetFoodCost
+        public Guid SpecialOfferID { get; set; }
+
+
+
+
+
+        public int PetFoodQty { get; set;}
+
+        public double PetFoodPrice { get; set;}
+        public double PetFoodCost { get; set;}
+        public double PetPrice { get; set;}
+
+        public double PriceDiscount { get; set;}
+        public double LineTotal { get; set;}
+
+
 
 
 

@@ -18,7 +18,7 @@ namespace Model
         public int Year { get; set; }
         public int Month { get; set; }
         public AnimalType AnimalType { get; set; }
-        public decimal TotalSold { get; set; }
+        public double TotalSold { get; set; } 
 
         
 

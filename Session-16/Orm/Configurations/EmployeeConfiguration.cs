@@ -17,7 +17,7 @@ namespace EF_Session_16.Orm.Configurations
             builder.HasKey(employee=>employee.EmployeeID);
             builder.Property(Employee => Employee.EmployeeName).HasMaxLength(10);
             builder.Property(Employee => Employee.EmployeeSurname).HasMaxLength(10);
-            builder.Property(Employee => Employee.SalaryPerMonth).HasPrecision(6);
+            builder.Property(Employee => Employee.SalaryPerMonth).HasPrecision(10,2);
            
             
             

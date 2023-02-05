@@ -10,10 +10,12 @@ namespace Model
 {
     public class Employee
     {
-        public Employee()
-        {
-            EmployeeID = Guid.NewGuid();
-        }
+        public Employee() { 
+        
+          EmployeeID = Guid.NewGuid();
+         
+            }  
+               
 
 
         public enum EmployeeTypeEnum
@@ -22,15 +24,17 @@ namespace Model
             Staff
         }
         public Guid EmployeeID { get; set; }
-
-        //Relations
-        public Transaction Transaction { get; set; } = null!;
-        public Guid TransactionID { get; set; }
-
         public string EmployeeName { get; set; } = null!;
         public string EmployeeSurname { get; set; } = null!;
         public double SalaryPerMonth { get; set; }
         public EmployeeTypeEnum EmployeeType { get; set; }
+
+        //relations
+        public Transaction Transaction { get; set; } = null!;
+     public Guid TransactionID { get; set; }
+   
+        
+
         
 
        

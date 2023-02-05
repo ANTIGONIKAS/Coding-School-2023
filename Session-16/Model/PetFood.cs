@@ -8,17 +8,29 @@ using System.Transactions;
 
 namespace Model
 {
-    public class PetFood
-    {
+    public class PetFood {
+
+        public PetFood() {
+
+            PetFoodID = Guid.NewGuid();
+           
+        }
+
+
+            
         public Guid PetFoodID { get; set; } 
         public AnimalTypeEnum AnimalType { get; set; }
 
-        public decimal PetFoodPrice { get; set; }
-        public decimal PetFoodCost { get; set; }
-        public TransactionLine TransactionLine { get; set; } = null!;
+        public double PetFoodPrice { get; set; }
+        public double PetFoodCost { get; set; }
+
+        public TransactionLine TransactionLine { get; set; }
         public Guid TransactionLineID { get; set; }
-        public Guid PetID { get; set; }
-         public Pet Pet { get; set; } = null!;
+        public SpecialOffer SpecialOffer { get; set; }
+        public Guid SpecialOfferID { get; set; }
+
+
+
 
         public enum AnimalTypeEnum
         {
@@ -28,9 +40,7 @@ namespace Model
             None
         }
 
-        public PetFood()
-        {
-            PetFoodID= Guid.NewGuid();
-        }
+        
     }
+
 }

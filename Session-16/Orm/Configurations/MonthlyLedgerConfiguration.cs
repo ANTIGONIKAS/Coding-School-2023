@@ -19,7 +19,7 @@ namespace EF_Session_16.Orm.Configurations
             builder.Property(monthlyLedger => monthlyLedger.Month).HasMaxLength(2); 
             builder.Property(monthlyLedger => monthlyLedger.Income).HasPrecision(20); //??
             builder.Property(monthlyLedger => monthlyLedger.Expenses).HasPrecision(15); 
-            builder.Property(monthlyLedger => monthlyLedger.Total).HasPrecision(20); 
+            builder.Property(monthlyLedger => monthlyLedger.TotalSold).HasPrecision(20); 
 
         }
     }

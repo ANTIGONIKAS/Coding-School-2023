@@ -21,7 +21,8 @@ namespace Orm.Context
         public DbSet<MonthlyLedger> MonthlyLedgers { get; set; }
         public DbSet<PetReport> PetReports { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<TransactionLine> TransactionsLines { get; set; }
+    
+
       
        
 
@@ -32,9 +33,9 @@ namespace Orm.Context
             modelBuilder.ApplyConfiguration(new PetConfiguration());
             modelBuilder.ApplyConfiguration(new PetFoodConfiguration());
             modelBuilder.ApplyConfiguration(new MonthlyLedgerConfiguration());
-            modelBuilder.ApplyConfiguration(new PetReportConfiguration());
+         
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
-            modelBuilder.ApplyConfiguration(new TransactionLineConfiguration());
+           
 
 
             base.OnModelCreating(modelBuilder);

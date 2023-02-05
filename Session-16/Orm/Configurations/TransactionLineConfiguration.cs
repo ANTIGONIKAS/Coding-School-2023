@@ -8,42 +8,45 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 
-
-
 namespace Orm.Configurations
 {
+   
+
+
+
+
     public class TransactionLineConfiguration : IEntityTypeConfiguration<TransactionLine>
     {
         public void Configure(EntityTypeBuilder<TransactionLine> builder)
         {
             builder.ToTable("TransactionLine");
             builder.HasKey(transactionLine => transactionLine.TransactionLineID);
-            builder.Property(transactionLine => transactionLine.PetFoodQty).IsRequired();
+            builder.Property(transactionLine => transactionLine.TransactionLineID).ValueGeneratedOnAdd();
+
+            builder.Property(transactionLine => transactionLine.PetFoodQty).IsRequired(true);
+            builder.Property(transactionLine => transactionLine.PetFoodPrice).HasPrecision(10, 2);
+            builder.Property(transactionLine => transactionLine.PetFoodCost).HasPrecision(10, 2).IsRequired(true);
+            builder.Property(transactionLine => transactionLine.LineTotal).HasPrecision(10, 2);
+            builder.Property(transactionLine => transactionLine.PetPrice).HasPrecision(10, 2).IsRequired(true);
+
+            builder.Property(transactionLine => transactionLine.TransactionID);
+            builder.Property(transactionLine => transactionLine.PetFoodID);
+            builder.Property(transactionLine => transactionLine.PetID);
             builder.Property(transactionLine => transactionLine.SpecialOfferID);
-            builder.Property(transactionLine => transactionLine.PetFoodPrice);
-            builder.Property(transactionLine => transactionLine.PetFoodCost);
-            builder.Property(transactionLine => transactionLine.PriceDiscount);
-            builder.Property(transactionLine => transactionLine.LineTotal);
-            builder.Property(transaction => transaction.PetID);
-            builder.Property(transaction => transaction.PetFood);
-            builder.Property(transaction => transaction.PetFoodID);
-            builder.Property(pet => pet.PetID);
+
+            builder.HasOne(transactionLine => transactionLine.Transastion).WithMany(transaction => transaction.TransactionLines).
+                HasForeignKey(transactionLine => transactionLine.TransactionID);
+
+            builder.HasOne(transactionLine => transactionLine.PetFood).WithOne(petFood => petFood.TransactionLine)
+                .HasForeignKey<TransactionLine>(transactionLine => transactionLine.PetFoodID);
+
+            builder.HasOne(transactionLine => transactionLine.SpecialOffer).WithOne(specialOffer => specialOffer.TransactionLine)
+                .HasForeignKey<TransactionLine>(transactionLine => transactionLine.SpecialOfferID);
 
 
 
 
-            //Relation OneToMany
 
-            //list
-            builder.HasOne(transactionLine => transactionLine.Transaction).WithMany(transaction => transaction.TransactionLines)
-                .HasForeignKey(transactionLine => transactionLine.TransactionID);
-
-            //Relation OneToOne
-
-            builder.HasOne(transactionLine => transactionLine.Pet).WithOne(pet => pet.TransactionLine)
-                         .HasForeignKey<Pet>(pet => pet.PetID);
-
-            builder.HasOne(transactionLine => transactionLine.PetFood).WithOne(petFood => petFood.TransactionLine).HasForeignKey<PetFood>(petfood => petfood.PetFoodID);
 
 
         }

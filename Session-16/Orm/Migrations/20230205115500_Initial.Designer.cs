@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Orm.Context;
 
@@ -11,9 +12,11 @@ using Orm.Context;
 namespace Orm.Migrations
 {
     [DbContext(typeof(PetShopContext))]
-    partial class PetShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230205115500_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,9 +51,6 @@ namespace Orm.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<Guid>("TransactionID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("CustomerID");
 
                     b.ToTable("Customer", (string)null);
@@ -79,9 +79,6 @@ namespace Orm.Migrations
                         .HasPrecision(10, 2)
                         .HasColumnType("float(10)");
 
-                    b.Property<Guid>("TransactionID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("EmployeeID");
 
                     b.ToTable("Employee", (string)null);
@@ -105,7 +102,7 @@ namespace Orm.Migrations
                         .HasMaxLength(2)
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalSold")
+                    b.Property<double>("Total")
                         .HasPrecision(20)
                         .HasColumnType("float(20)");
 
@@ -142,9 +139,6 @@ namespace Orm.Migrations
                     b.Property<double>("Price")
                         .HasPrecision(10, 2)
                         .HasColumnType("float(10)");
-
-                    b.Property<Guid>("TransactionID")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PetID");
 
@@ -185,8 +179,8 @@ namespace Orm.Migrations
                     b.Property<int>("Month")
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalSold")
-                        .HasColumnType("float");
+                    b.Property<decimal>("TotalSold")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -198,8 +192,9 @@ namespace Orm.Migrations
 
             modelBuilder.Entity("Model.Transaction", b =>
                 {
-                    b.Property<Guid>("TransactionID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
+                        .HasMaxLength(100)
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CustomerID")
@@ -237,16 +232,11 @@ namespace Orm.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("TransactionLineID")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasKey("ID");
 
-                    b.HasKey("TransactionID");
+                    b.HasIndex("CustomerID");
 
-                    b.HasIndex("CustomerID")
-                        .IsUnique();
-
-                    b.HasIndex("EmployeeID")
-                        .IsUnique();
+                    b.HasIndex("EmployeeID");
 
                     b.HasIndex("PetFoodID");
 
@@ -256,67 +246,21 @@ namespace Orm.Migrations
                     b.ToTable("Transaction", (string)null);
                 });
 
-            modelBuilder.Entity("Model.TransactionLine", b =>
-                {
-                    b.Property<Guid>("TransactionLineID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<double>("LineTotal")
-                        .HasColumnType("float");
-
-                    b.Property<double>("PetFoodCost")
-                        .HasColumnType("float");
-
-                    b.Property<Guid>("PetFoodID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<double>("PetFoodPrice")
-                        .HasColumnType("float");
-
-                    b.Property<int>("PetFoodQty")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("PetID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<double>("PetPrice")
-                        .HasColumnType("float");
-
-                    b.Property<double>("PriceDiscount")
-                        .HasColumnType("float");
-
-                    b.Property<Guid>("TransactionID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("TransactionLineID");
-
-                    b.HasIndex("PetFoodID")
-                        .IsUnique();
-
-                    b.HasIndex("PetID");
-
-                    b.HasIndex("TransactionID");
-
-                    b.ToTable("TransactionLine");
-                });
-
             modelBuilder.Entity("Model.Transaction", b =>
                 {
                     b.HasOne("Model.Customer", "Customer")
-                        .WithOne("Transaction")
-                        .HasForeignKey("Model.Transaction", "CustomerID")
+                        .WithMany("Transactions")
+                        .HasForeignKey("CustomerID")
                         .IsRequired();
 
                     b.HasOne("Model.Employee", "Employee")
-                        .WithOne("Transaction")
-                        .HasForeignKey("Model.Transaction", "EmployeeID")
+                        .WithMany("Transactions")
+                        .HasForeignKey("EmployeeID")
                         .IsRequired();
 
                     b.HasOne("Model.PetFood", "PetFood")
-                        .WithMany()
+                        .WithMany("Transactions")
                         .HasForeignKey("PetFoodID")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Model.Pet", "Pet")
@@ -333,43 +277,14 @@ namespace Orm.Migrations
                     b.Navigation("PetFood");
                 });
 
-            modelBuilder.Entity("Model.TransactionLine", b =>
-                {
-                    b.HasOne("Model.PetFood", "PetFood")
-                        .WithOne("TransactionLine")
-                        .HasForeignKey("Model.TransactionLine", "PetFoodID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Model.Pet", "Pet")
-                        .WithMany()
-                        .HasForeignKey("PetID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Model.Transaction", "Transastion")
-                        .WithMany("TransactionLines")
-                        .HasForeignKey("TransactionID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pet");
-
-                    b.Navigation("PetFood");
-
-                    b.Navigation("Transastion");
-                });
-
             modelBuilder.Entity("Model.Customer", b =>
                 {
-                    b.Navigation("Transaction")
-                        .IsRequired();
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("Model.Employee", b =>
                 {
-                    b.Navigation("Transaction")
-                        .IsRequired();
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("Model.Pet", b =>
@@ -380,13 +295,7 @@ namespace Orm.Migrations
 
             modelBuilder.Entity("Model.PetFood", b =>
                 {
-                    b.Navigation("TransactionLine")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Model.Transaction", b =>
-                {
-                    b.Navigation("TransactionLines");
+                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }
