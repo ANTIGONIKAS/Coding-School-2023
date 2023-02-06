@@ -2,7 +2,7 @@ header{
     background-color: #DDE0E3; 
     display: flex;
     justify-content: space-between;
-    align-items: inline;
+    align-items: center;
     margin: -0.5rem;
 }
   
