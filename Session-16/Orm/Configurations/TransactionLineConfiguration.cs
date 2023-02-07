@@ -38,13 +38,15 @@ namespace Orm.Configurations
                 HasForeignKey(transactionLine => transactionLine.TransactionID);
 
             builder.HasOne(transactionLine => transactionLine.PetFood).WithOne(petFood => petFood.TransactionLine)
-                .HasForeignKey<TransactionLine>(transactionLine => transactionLine.PetFoodID);
+                .HasForeignKey<TransactionLine>(transactionLine => transactionLine.PetFoodID).OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(transactionLine => transactionLine.SpecialOffer).WithOne(specialOffer => specialOffer.TransactionLine)
-                .HasForeignKey<TransactionLine>(transactionLine => transactionLine.SpecialOfferID);
+                .HasForeignKey<TransactionLine>(transactionLine => transactionLine.SpecialOfferID).OnDelete(DeleteBehavior.NoAction);
 
 
-
+            builder.HasOne(transactionLine => transactionLine.Pet)
+             .WithOne(pet => pet.TransactionLine)
+             .HasForeignKey<TransactionLine>(transactionLine => transactionLine.PetID).OnDelete(DeleteBehavior.ClientSetNull);
 
 
 

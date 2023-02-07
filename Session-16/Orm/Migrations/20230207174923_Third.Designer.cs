@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Orm.Context;
 
@@ -11,9 +12,11 @@ using Orm.Context;
 namespace Orm.Migrations
 {
     [DbContext(typeof(PetShopContext))]
-    partial class PetShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230207174923_Third")]
+    partial class Third
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace Orm.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Model.CustomerF", b =>
+            modelBuilder.Entity("Model.Customer", b =>
                 {
                     b.Property<Guid>("CustomerID")
                         .ValueGeneratedOnAdd()
@@ -341,16 +344,14 @@ namespace Orm.Migrations
 
             modelBuilder.Entity("Model.Transaction", b =>
                 {
-                    b.HasOne("Model.CustomerF", "Customer")
+                    b.HasOne("Model.Customer", "Customer")
                         .WithOne("Transaction")
                         .HasForeignKey("Model.Transaction", "CustomerID")
-                        .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
                     b.HasOne("Model.Employee", "Employee")
                         .WithOne("Transaction")
                         .HasForeignKey("Model.Transaction", "EmployeeID")
-                        .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
                     b.Navigation("Customer");
@@ -363,7 +364,7 @@ namespace Orm.Migrations
                     b.HasOne("Model.PetFood", "PetFood")
                         .WithOne("TransactionLine")
                         .HasForeignKey("Model.TransactionLine", "PetFoodID")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Model.Pet", "Pet")
@@ -374,7 +375,7 @@ namespace Orm.Migrations
                     b.HasOne("Model.SpecialOffer", "SpecialOffer")
                         .WithOne("TransactionLine")
                         .HasForeignKey("Model.TransactionLine", "SpecialOfferID")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Model.Transaction", "Transastion")
@@ -392,7 +393,7 @@ namespace Orm.Migrations
                     b.Navigation("Transastion");
                 });
 
-            modelBuilder.Entity("Model.CustomerF", b =>
+            modelBuilder.Entity("Model.Customer", b =>
                 {
                     b.Navigation("Transaction")
                         .IsRequired();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public  class SpecialOffer
+    public  class SpecialOffer:IEntityBase
     {
 
         public SpecialOffer() {

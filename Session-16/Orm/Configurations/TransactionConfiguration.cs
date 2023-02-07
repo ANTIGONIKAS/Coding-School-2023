@@ -20,8 +20,8 @@ namespace EF_Session_16.Orm.Configurations
             builder.Property(transaction => transaction.TransactionDate).HasMaxLength(50);
             builder.Property(transaction => transaction.CustomerID).HasMaxLength(50);
             builder.Property(transaction => transaction.EmployeeID).HasMaxLength(50);
-            builder.Property(transaction => transaction.PetID).HasMaxLength(30);
-            builder.Property(transaction => transaction.PetFoodID).HasMaxLength(30);
+            //builder.Property(transaction => transaction.PetID).HasMaxLength(30);
+            //builder.Property(transaction => transaction.PetFoodID).HasMaxLength(30);
 
 
             builder.Property(transaction => transaction.PetPrice).HasPrecision(10);
@@ -32,16 +32,14 @@ namespace EF_Session_16.Orm.Configurations
 
             // customer
             builder.HasOne(transaction => transaction.Customer).WithOne(customer => customer.Transaction)
-                    .HasForeignKey<Transaction>(transaction => transaction.CustomerID).OnDelete(DeleteBehavior.ClientSetNull);
+                    .HasForeignKey<Transaction>(transaction => transaction.CustomerID).OnDelete(DeleteBehavior.SetNull);
 
 
             //EMPLOYEE
             builder.HasOne(transaction => transaction.Employee).WithOne(employee => employee.Transaction)
-                           .HasForeignKey<Transaction>(transaction => transaction.EmployeeID).OnDelete(DeleteBehavior.ClientSetNull);
-            // PET
-            builder.HasOne(transaction => transaction.Pet)
-               .WithOne(pet => pet.Transaction)
-               .HasForeignKey<Transaction>(transaction => transaction.PetID).OnDelete(DeleteBehavior.ClientSetNull);
+                           .HasForeignKey<Transaction>(transaction => transaction.EmployeeID).OnDelete(DeleteBehavior.SetNull);
+            
+          
 
 
         }

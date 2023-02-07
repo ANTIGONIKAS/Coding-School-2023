@@ -8,7 +8,7 @@ using System.Transactions;
 
 namespace Model
 {
-    public class PetFood {
+    public class PetFood :IEntityBase{
 
         public PetFood() {
 
@@ -17,16 +17,16 @@ namespace Model
         }
 
 
-            
-        public Guid PetFoodID { get; set; } 
+
+        public Guid PetFoodID { get; set; }
         public AnimalTypeEnum AnimalType { get; set; }
 
         public double PetFoodPrice { get; set; }
         public double PetFoodCost { get; set; }
 
-        public TransactionLine TransactionLine { get; set; }
+        public TransactionLine TransactionLine { get; set; } = null!;
         public Guid TransactionLineID { get; set; }
-        public SpecialOffer SpecialOffer { get; set; }
+        public SpecialOffer SpecialOffer { get; set; } = null!;
         public Guid SpecialOfferID { get; set; }
 
 

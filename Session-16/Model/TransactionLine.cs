@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class TransactionLine
+    public class TransactionLine:IEntityBase
     {
         public TransactionLine() {
 
         TransactionLineID=Guid.NewGuid();
+            //Pets= new List<Pet>();
+            //PetFoods= new List<PetFood>();
             
         }
         //properties

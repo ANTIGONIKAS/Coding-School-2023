@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Customer
+    public class CustomerF: IEntityBase
     {
 
-        public Customer()
+        public CustomerF()
         {
 
             CustomerID = Guid.NewGuid();

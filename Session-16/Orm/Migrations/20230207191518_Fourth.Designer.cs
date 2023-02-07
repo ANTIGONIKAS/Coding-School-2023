@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Orm.Context;
 
@@ -11,9 +12,11 @@ using Orm.Context;
 namespace Orm.Migrations
 {
     [DbContext(typeof(PetShopContext))]
-    partial class PetShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230207191518_Fourth")]
+    partial class Fourth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -344,13 +347,11 @@ namespace Orm.Migrations
                     b.HasOne("Model.CustomerF", "Customer")
                         .WithOne("Transaction")
                         .HasForeignKey("Model.Transaction", "CustomerID")
-                        .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
                     b.HasOne("Model.Employee", "Employee")
                         .WithOne("Transaction")
                         .HasForeignKey("Model.Transaction", "EmployeeID")
-                        .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
                     b.Navigation("Customer");
@@ -363,7 +364,6 @@ namespace Orm.Migrations
                     b.HasOne("Model.PetFood", "PetFood")
                         .WithOne("TransactionLine")
                         .HasForeignKey("Model.TransactionLine", "PetFoodID")
-                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Model.Pet", "Pet")
@@ -374,7 +374,6 @@ namespace Orm.Migrations
                     b.HasOne("Model.SpecialOffer", "SpecialOffer")
                         .WithOne("TransactionLine")
                         .HasForeignKey("Model.TransactionLine", "SpecialOfferID")
-                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Model.Transaction", "Transastion")

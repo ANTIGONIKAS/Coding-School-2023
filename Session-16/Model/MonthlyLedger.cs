@@ -9,7 +9,7 @@ using System.Xml.Schema;
 
 namespace Model
 {
-    public class MonthlyLedger {
+    public class MonthlyLedger:IEntityBase {
 
         public Guid MonthlyLedID { get; set; }
         public int Year { get; set; }   //ReadOnly     

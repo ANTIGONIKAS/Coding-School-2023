@@ -10,7 +10,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Model;
 
-public class Transaction
+public class Transaction:IEntityBase
 {
 
 
@@ -30,12 +30,12 @@ public class Transaction
 
     //Relations
 
-    public Customer Customer { get; set; } = null!;
+    public CustomerF Customer { get; set; } = null!;
     public Guid CustomerID { get; set; }  //FK
-    public Pet Pet { get; set; } = null!;
-    public Guid PetID { get; set; }
-    public PetFood PetFood { get; set; } = null!;
-    public Guid PetFoodID { get; set; }
+    //public Pet Pet { get; set; } = null!;
+    //public Guid PetID { get; set; }
+    //public PetFood PetFood { get; set; } = null!;
+    //public Guid PetFoodID { get; set; }
     public Employee Employee { get; set; } = null!;
     public Guid EmployeeID { get; set; }
 
@@ -51,7 +51,7 @@ public class Transaction
     }
 
     public Transaction(Guid transactionID, DateTime transactionDate, double petPrice, int petFoodQty, double petFoodPrice,
-        double totalPrice, Pet pet, Guid petID, Customer customer, Guid customerID, Employee employee, Guid employeeID)
+        double totalPrice, CustomerF customer, Guid customerID, Employee employee, Guid employeeID)
     {
         TransactionID = transactionID;
         TransactionDate = transactionDate;
@@ -59,8 +59,8 @@ public class Transaction
         PetFoodQty = petFoodQty;
         PetFoodPrice = petFoodPrice;
         TotalPrice = totalPrice;
-        Pet = pet;
-        PetID = petID;
+        //Pet = pet;
+        //PetID = petID;
         Customer = customer;
         CustomerID = customerID;
         Employee = employee;

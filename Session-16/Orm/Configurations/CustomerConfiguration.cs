@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Orm.Configurations
 {
-    public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
+    public class CustomerConfiguration : IEntityTypeConfiguration<CustomerF>
     {
-        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Customer> builder)
+        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<CustomerF> builder)
         {
             //tha ftiaxei ena pinaka customers
             builder.ToTable("Customer");

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Pet
+    public class Pet:IEntityBase 
     {
         public Pet()
         {
@@ -43,7 +43,7 @@ namespace Model
         public double Cost { get; set; }
 
         //Relations
-        public Transaction Transaction { get; set; } = null!;
+        public TransactionLine TransactionLine { get; set; } = null!;
         public Guid TransactionID { get; set; }
 
 

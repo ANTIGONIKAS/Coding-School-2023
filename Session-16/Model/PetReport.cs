@@ -8,7 +8,7 @@ using static Model.Pet;
 
 namespace Model
 {
-    public class PetReport
+    public class PetReport:IEntityBase
     {
         public PetReport()
         {

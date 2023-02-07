@@ -14,13 +14,14 @@ namespace Orm.Context
 {
     public class  PetShopContext : DbContext
     {
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerF> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Pet> Pets { get; set; }
         public DbSet<PetFood> PetFoods { get; set; }
         public DbSet<MonthlyLedger> MonthlyLedgers { get; set; }
         public DbSet<PetReport> PetReports { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<TransactionLine> TransactionLines { get; set; }
     
 
       
@@ -33,6 +34,8 @@ namespace Orm.Context
             modelBuilder.ApplyConfiguration(new PetConfiguration());
             modelBuilder.ApplyConfiguration(new PetFoodConfiguration());
             modelBuilder.ApplyConfiguration(new MonthlyLedgerConfiguration());
+            modelBuilder.ApplyConfiguration(new SpecialOfferConfiguration());
+            modelBuilder.ApplyConfiguration(new TransactionLineConfiguration());
          
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
            

@@ -8,7 +8,7 @@ using System.Transactions;
 
 namespace Model
 {
-    public class Employee
+    public class Employee :IEntityBase
     {
         public Employee() { 
         
