@@ -10,18 +10,19 @@ namespace PetShop.EF.Configurations
         public void Configure(EntityTypeBuilder<PetFood> builder)
         {
             // Table Name
-            builder.ToTable("PetFoods");
+            builder.ToTable("PetFood","PetShop");
 
             // Primary Key
-            builder.HasKey(t => t.Id);
-            builder.Property(t => t.Id).ValueGeneratedOnAdd();
+            builder.HasKey(petFood => petFood.Id);
+
+            builder.Property(petFood => petFood.Id).ValueGeneratedOnAdd();
 
             // Properties
-            builder.Property(t => t.AnimalType).IsRequired();
-            builder.Property(t => t.Price).HasPrecision(4, 2).IsRequired();
-            builder.Property(t => t.Cost).HasPrecision(4, 2).IsRequired();
+            builder.Property(petFood => petFood.Title).HasMaxLength(maxLength: 200);
+            builder.HasIndex(petFood=> petFood.Finished);
+           
 
-            // Relations
+           
         }
     }
 }

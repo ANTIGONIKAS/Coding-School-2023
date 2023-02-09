@@ -11,50 +11,65 @@ namespace PetShop.EF.Repositories
 {
     public class EmployeeRepo : IEntityRepo<Employee>
     {
+        IEnumerable<Employee> IEntityRepo<Employee>.GetAll()
+        {
+            using var context = new PetShopDbContext();
+            return context.Employees.Include(employee => employee.Detail).ToList();
+
+        }
+       public Employee? GetById(int id)
+        {
+             using var context = new PetShopDbContext();
+
+             return context.Employees.Include(employee=>employee.Detail).
+             Include(customer => customer.Transactions).SingleOrDefault(employee => employee.Id == id);
+       
+                }
+
+        public IEnumerable<Employee> GetFinished()
+        {
+            using var context = new PetShopDbContext();
+
+            return context.Employees.Where(todo => todo.Finished).
+                Include(todo => todo.Detail).ToList();
+        }
+
         public void Add(Employee entity)
         {
             using var context = new PetShopDbContext();
+            if (entity.Id != 0)
+             throw new ArgumentException("Given entity should not have Id set", nameof(entity));
             context.Add(entity);
             context.SaveChanges();
         }
-
-        public void Delete(int id)
+        public void Update(int id, Employee entity)
         {
             using var context = new PetShopDbContext();
-            var dbEmployee =context.Employees.Where(employee=>employee.Id == id).SingleOrDefault();
+            var dbEmployee = context.Employees.Include(employee => employee.Detail).
+                SingleOrDefault(employee=>employee.Id==id);
             if (dbEmployee is null)
-                return;
+             throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            dbEmployee.Title = entity.Title;
+            dbEmployee.Finished = entity.Finished;
+            context.SaveChanges();
+        }
+            public void Delete(int id)
+        {
+            using var context = new PetShopDbContext();
+
+            var dbEmployee =context.Employees.
+                SingleOrDefault(employee => employee.Id == id);
+            if (dbEmployee is null)
+           throw new KeyNotFoundException($"Given id '{id}' was not found in database");
             context.Remove(dbEmployee);
             context.SaveChanges();
         }
 
-        public IList<Employee> GetAll()
-        {
-            using var context = new PetShopDbContext();
-            return context.Employees.Include(employee => employee.Transactions).ToList();
-        }
 
-        public Employee? GetById(int id)
-        {
-            using var context = new PetShopDbContext();
-            return context.Employees.Where(employee=> employee.Id == id).
-                Include(customer=>customer.Transactions).SingleOrDefault();
+      
 
-        }
-
-        public void Update(int id, Employee entity)
-        {
-            using var context = new PetShopDbContext();
-            var dbEmployee = context.Employees.Where(employee => employee.Id == id).SingleOrDefault();
-            if (dbEmployee is null)
-                return;
-            dbEmployee.Name = entity.Name;
-            dbEmployee.Surname = entity.Surname;
-            dbEmployee.SalaryPerMonth = entity.SalaryPerMonth;
-            dbEmployee.EmployeeType= entity.EmployeeType; //??
-            dbEmployee.Transactions = entity.Transactions;
-            context.SaveChanges();
-
-        }
+        
+          
+       
     }
 }

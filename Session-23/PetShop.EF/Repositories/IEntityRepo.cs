@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace PetShop.EF.Repositories
 {
     public  interface IEntityRepo<TEntity>
-       where TEntity :IEntityBase
+       where TEntity :EntityBase
     {
         
-       IList<TEntity> GetAll();
+       IEnumerable<TEntity> GetAll();
 
         TEntity? GetById(int id);
 

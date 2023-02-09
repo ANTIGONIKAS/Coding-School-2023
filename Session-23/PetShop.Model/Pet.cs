@@ -4,26 +4,22 @@ namespace PetShop.Model
 {
     public class Pet:EntityBase
     {
-        public Pet(string breed, AnimalType animalType, PetStatus petStatus, decimal price, decimal cost)
+        public Pet(string title)
         {
-            Breed = breed;
-            AnimalType = animalType;
-            PetStatus = petStatus;
-            Price = price;
-            Cost = cost;
-
+            Title=title;
+            Detail = new PetDetail();
             Transactions = new List<Transaction>();
         }
 
+       public string Title { get; set; }
+        public bool Finished { get; set; }
+            
        
-        public string Breed { get; set; }
-        public AnimalType AnimalType { get; set; }
-        public PetStatus PetStatus { get; set; }
-        public decimal Price { get; set; }
-        public decimal Cost { get; set; }
 
         // Relations
-        public List<Transaction> Transactions { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
+
+        public PetDetail Detail { get; set; }
     }
 
 
