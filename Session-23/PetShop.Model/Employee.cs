@@ -4,21 +4,23 @@ namespace PetShop.Model
 {
     public class Employee:EntityBase
     {
-        public Employee(string title)
+        public Employee(string name, string surname, EmployeeType employeeType, int salaryPerMonth)
         {
-            Title = title;
+            Name = name;
+            Surname = surname;
+            EmployeeType = employeeType;
+            SalaryPerMonth = salaryPerMonth;
 
             Transactions = new List<Transaction>();
-
-            Detail= new EmployeeDetail();
         }
 
        
-        public String Title { get; set; }
-        public bool Finished { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public EmployeeType EmployeeType { get; set; }
+        public int SalaryPerMonth { get; set; }
 
         // Relations
-        public EmployeeDetail Detail { get; set; }
-        public ICollection<Transaction> Transactions { get; set; }
+        public List<Transaction> Transactions { get; set; }
     }
 }

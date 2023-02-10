@@ -1,27 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-
-namespace PetShop.Model
+﻿namespace PetShop.Model
 {
     public class Customer:EntityBase
     {
-        public Customer(string title)
+        public Customer(string name, string surname, int phone, string tin)
         {
-            Title = title;
+            Name = name;
+            Surname = surname;
+            Phone = phone;
+            Tin = tin;
 
-            Detail = new CustomerDetail();
-            Transactions= new List<Transaction>();
+            Transactions = new List<Transaction>();
         }
 
-       public string Title { get; set; }
-        public bool Finished { get; set; }
+      
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public int Phone { get; set; }
+        public string Tin { get; set; }
 
         // Relations
-       
-        //relations
-        public CustomerDetail Detail{ get; set; }
-    
-   public ICollection<Transaction> Transactions { get; set; }
-
-}
+        public List<Transaction> Transactions { get; set; }
+    }
 }

@@ -10,39 +10,38 @@ namespace PetShop.EF.Configurations
         public void Configure(EntityTypeBuilder<Transaction> builder)
         {
             // Table Name
-            builder.ToTable("Transaction","PetShop");
+            builder.ToTable("Transactions");
 
             // Primary Key
-            builder.HasKey(transaction => transaction.Id);
-            builder.Property(transaction => transaction.Id).ValueGeneratedOnAdd();
+            builder.HasKey(t => t.Id);
+            builder.Property(t => t.Id).ValueGeneratedOnAdd();
 
             // Properties
-            builder.Property(transaction => transaction.Date).IsRequired();
-            builder.Property(transaction => transaction.PetPrice).HasPrecision(4, 2).IsRequired();
-            builder.Property(transaction=> transaction.PetFoodQty).IsRequired();
-            builder.Property(transaction => transaction.PetFoodPrice).HasPrecision(4, 2).IsRequired();
-            builder.Property(transaction => transaction.TotalPrice).HasPrecision(5, 2).IsRequired();
+            builder.Property(t => t.Date).IsRequired();
+            builder.Property(t => t.PetPrice).HasPrecision(4, 2).IsRequired();
+            builder.Property(t => t.PetFoodQty).IsRequired();
+            builder.Property(t => t.PetFoodPrice).HasPrecision(4, 2).IsRequired();
+            builder.Property(t => t.TotalPrice).HasPrecision(5, 2).IsRequired();
 
             // Relations
-            builder.HasOne(transaction => transaction.Customer)
-                .WithMany(transaction => transaction.Transactions)
-                .HasForeignKey(transaction => transaction.CustomerId)
+            builder.HasOne(t => t.Customer)
+                .WithMany(t => t.Transactions)
+                .HasForeignKey(t => t.CustomerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(transaction => transaction.Employee)
-                .WithMany(transaction => transaction.Transactions)
-                .HasForeignKey(transaction => transaction.EmployeeId)
+            builder.HasOne(t => t.Employee)
+                .WithMany(t => t.Transactions)
+                .HasForeignKey(t => t.EmployeeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(transaction => transaction.Pet ) 
-            
-                .WithMany(transaction => transaction.Transactions)
-                .HasForeignKey(transaction => transaction.PetId)
+            builder.HasOne(t => t.Pet)
+                .WithMany(t => t.Transactions)
+                .HasForeignKey(t => t.PetId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(transaction => transaction.PetFood)
-                .WithMany(transaction => transaction.Transactions)
-                .HasForeignKey(transaction => transaction.PetFoodId)
+            builder.HasOne(t => t.PetFood)
+                .WithMany(t => t.Transactions)
+                .HasForeignKey(t => t.PetFoodId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

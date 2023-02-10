@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PetShop.Web.Mvc.Models;
+using MVC.Models;
 using System.Diagnostics;
 
-namespace PetShop.Web.Mvc.Controllers
+namespace MVC.Controllers
 {
     public class HomeController : Controller
     {
@@ -15,7 +15,8 @@ namespace PetShop.Web.Mvc.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var name = "Antigoni";
+            return View(model:name);
         }
 
         public IActionResult Privacy()

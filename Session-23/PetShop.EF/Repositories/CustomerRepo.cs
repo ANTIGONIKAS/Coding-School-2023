@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PetShop.EF.Context;
+﻿using PetShop.EF.Context;
 using PetShop.Model;
 using System;
 using System.Collections.Generic;
@@ -9,79 +8,64 @@ using System.Threading.Tasks;
 
 namespace PetShop.EF.Repositories
 {
-    public class CustomerRepo : IEntityRepo<Customer>
+    public class CustomerRepo : EntityInterface<Customer>
     {
-
-        public IEnumerable<Customer> GetAll()
+        public void Add(Customer entity)
         {
             using var context = new PetShopDbContext();
-            return context.Customers.Include(customer => customer.Detail).ToList();
+            if (entity.Id != 0)
+                throw new ArgumentException("Given entity should not have Id set", nameof(entity));
+            context.Customers.Add(entity);
+            context.SaveChanges();
+        }
 
+        public void Delete(int id)
+        {
+            using var context = new PetShopDbContext();
+            var dbCustomer = context.Customers.Where(customer => customer.Id == id).SingleOrDefault();
+            if (dbCustomer is null)
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            context.Customers.Remove(dbCustomer);
+            context.SaveChanges();
+
+        }
+
+        public IList<Customer> GetAll()
+        {
+            using var context = new PetShopDbContext();
+
+            return context.Customers.ToList();
         }
 
         public Customer? GetById(int id)
         {
             using var context = new PetShopDbContext();
 
-            return context.Customers.Include(customer => customer.Detail).
-                Include(customer => customer.Transactions).
-                SingleOrDefault(customer => customer.Id == id);
-
-
-        }
-        public IEnumerable<Customer> GetFinished()
-        {
-            using var context = new PetShopDbContext();
-            return context.Customers.Where(todo => todo.Finished).Include(todo => todo.Detail).ToList();
-        }
-        public void Add(Customer entity)
-        {
-            using var context = new PetShopDbContext();
-            if (entity.Id != 0)
-                throw new ArgumentException("Given entity should not have Id set", nameof(entity));
-
-            context.Customers.Add(entity);
-            context.SaveChanges();
-        }
-
-
-
-        public void Update(int id, Customer entity)
-        {
-            using var context = new PetShopDbContext();
-
-            var dbTodo = context.Customers.Include(todo => todo.Detail).SingleOrDefault(todo => todo.Id == id);
-            if (dbTodo is null)
-                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
-
-            dbTodo.Title = entity.Title;
-            dbTodo.Finished = entity.Finished;
-
-
-            context.SaveChanges();
-
-        }
-
-        public void Delete(int id)
-        {
-            using var context = new PetShopDbContext();
-            var dbCustomer = context.Customers.SingleOrDefault(customer => customer.Id == id);
+            var dbCustomer=context.Customers.Where(customer => customer.Id == id).SingleOrDefault();
             if (dbCustomer is null)
+            {
                 throw new KeyNotFoundException($"Given id '{id}' was not found in database");
-
-            context.Remove(dbCustomer);
-            context.SaveChanges();
-           
+            }
+            else
+            {
+                return dbCustomer;
+            }
         }
+
+   public void Update(int id, Customer entity)
+    {
+     using var context = new PetShopDbContext();
+            var dbCustomer=context.Customers.Where(customer => customer.Id == id).SingleOrDefault();
+            if (dbCustomer is null)
+            {
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            }
+            dbCustomer.Name = entity.Name;
+            dbCustomer.Surname = entity.Surname;
+            dbCustomer.Phone = entity.Phone;
+            dbCustomer.Tin= entity.Tin;
+            context.SaveChanges();
+        }             
+        }
+
     }
-
-    
-    }
-
-
-
-
-
-
- 
-

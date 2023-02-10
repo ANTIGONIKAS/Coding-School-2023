@@ -2,7 +2,6 @@
 
 using PetShop.EF.Configurations;
 using PetShop.Model;
-using PetShop.Model.Enums;
 
 namespace PetShop.EF.Context
 {
@@ -21,12 +20,6 @@ namespace PetShop.EF.Context
             modelBuilder.ApplyConfiguration(new PetConfiguration());
             modelBuilder.ApplyConfiguration(new PetFoodConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
-            modelBuilder.ApplyConfiguration(new CustomerDetailConfiguration());
-            modelBuilder.ApplyConfiguration(new EmployeeDetailConfiguration());
-            modelBuilder.ApplyConfiguration(new PetDetailConfiguration());
-            modelBuilder.ApplyConfiguration(new PetFoodDetailConfiguration());
-             
-
             base.OnModelCreating(modelBuilder);
         }
 

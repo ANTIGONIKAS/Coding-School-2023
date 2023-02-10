@@ -4,17 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PetShop.Model;
-
-      public interface IEntityBase
+namespace PetShop.Model
 {
-    int Id { get; set; }
-}
-
-    public  class EntityBase:IEntityBase
+    public interface IEntityBase
     {
-       public int Id { get; set; }
-
+        int Id { get; set; }
     }
-
-
+    public class EntityBase
+    {
+        public int Id { get; set; }
+    }
+}

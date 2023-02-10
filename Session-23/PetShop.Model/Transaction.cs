@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PetShop.Model
+﻿namespace PetShop.Model
 {
-    public class Transaction: EntityBase
+    public class Transaction:EntityBase
     {
         public Transaction(decimal petPrice, int petFoodQty, decimal petFoodPrice, decimal totalPrice)
         {
@@ -13,15 +11,12 @@ namespace PetShop.Model
             TotalPrice = totalPrice;
         }
 
-        [Required]
+       
+       
         public DateTime Date { get; set; }
-        [Required]
         public decimal PetPrice { get; set; }
-        [Required]
         public int PetFoodQty { get; set; }
-        [Required]
         public decimal PetFoodPrice { get; set; }
-        [Required]
         public decimal TotalPrice { get; set; }
 
         // Relations

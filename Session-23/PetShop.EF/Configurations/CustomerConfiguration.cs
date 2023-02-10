@@ -10,17 +10,17 @@ namespace PetShop.EF.Configurations
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
             // Table Name
-            builder.ToTable("Customer","PetShop");
+            builder.ToTable("Customers");
 
             // Primary Key
-            builder.HasKey(customer => customer.Id);
-            builder.Property(customer => customer.Id).ValueGeneratedOnAdd();
+            builder.HasKey(t => t.Id);
+            builder.Property(t => t.Id).ValueGeneratedOnAdd();
 
             // Properties
-            builder.Property(customer => customer.Title).HasMaxLength(maxLength: 200);
-            builder.Property(customer => customer.Finished).HasMaxLength(100).IsRequired();
-            builder.HasIndex(customer => customer.Finished);
-           
+            builder.Property(t => t.Name).HasMaxLength(50).IsRequired();
+            builder.Property(t => t.Surname).HasMaxLength(100).IsRequired();
+            builder.Property(t => t.Phone).IsRequired();
+            builder.Property(t => t.Tin).HasMaxLength(30).IsRequired();
 
             // Relations
 
