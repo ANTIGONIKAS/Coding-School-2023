@@ -2,77 +2,71 @@
 using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repositories;
 using PetShop.Model;
+using System.Drawing;
 
 namespace MVC.Controllers
 {
-    public class EmployeeContoller : Controller
+    public class PetFoodController : Controller
     {
-        private readonly EntityInterface<Employee> _employeeRepo;
-        public EmployeeContoller(EntityInterface<Employee> employeeRepo)
+        private readonly EntityInterface<PetFood> _petFoodRepo;
+        public PetFoodController(EntityInterface<PetFood> petFoodRepo)
         {
-            _employeeRepo = employeeRepo;
+            _petFoodRepo= petFoodRepo;
         }
-
-        // GET: EmployeeContoller
-
+    
+        // GET: PetFoodController
         public ActionResult Index()
         {
-           // var text = "test";
-            var employees = _employeeRepo.GetAll().ToList();
-            return View(model: employees);
-           // return View(model: text);
+            var petFoods =_petFoodRepo.GetAll();
+            return View(model:petFoods);
         }
 
-        // GET: EmployeeContoller/Details/5
+        // GET: PetFoodController/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var employee = _employeeRepo.GetById(id.Value);
-
-            if (employee == null)
+            var petFood = _petFoodRepo.GetById(id.Value);
+            if (petFood == null)
             {
                 return NotFound();
             }
-            return View(model: employee);
-
-
+            return View(model:petFood);
         }
 
-        // GET: EmployeeContoller/Create
+        // GET: PetFoodController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: EmployeeContoller/Create
+        // POST: PetFoodController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EmployeeCreateDto employee)
+        public ActionResult Create(PetFoodCreateDto petFood)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            var dbEmployee = new Employee(employee.Name, employee.Surname, employee.EmployeeType, employee.SalaryPerMonth);
+            var dbPetFood = new PetFood(petFood.AnimalType,  petFood.Price, petFood.Cost);
 
+            _petFoodRepo.Add(dbPetFood);
 
-            _employeeRepo.Add(dbEmployee);
             return RedirectToAction("Index");
+           
         }
-               
     
 
-
-        // GET: EmployeeContoller/Edit/5
+    // GET: PetFoodController/Edit/5
         public ActionResult Edit(int id)
-        {
-            return View();
-        }
+    {
+        return View();
+    }
 
-        // POST: EmployeeContoller/Edit/5
+    // POST: PetFoodController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -87,13 +81,13 @@ namespace MVC.Controllers
             }
         }
 
-        // GET: EmployeeContoller/Delete/5
+        // GET: PetFoodController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: EmployeeContoller/Delete/5
+        // POST: PetFoodController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

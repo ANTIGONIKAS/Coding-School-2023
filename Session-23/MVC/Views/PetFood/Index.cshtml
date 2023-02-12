@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PetShop.Model.Employee>
+﻿@model IEnumerable<PetShop.Model.PetFood>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,16 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.AnimalType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Surname)
+                @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SalaryPerMonth)
+                @Html.DisplayNameFor(model => model.Cost)
             </th>
             <th></th>
         </tr>
@@ -31,16 +28,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.AnimalType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Surname)
+                @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EmployeeType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SalaryPerMonth)
+                @Html.DisplayFor(modelItem => item.Cost)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

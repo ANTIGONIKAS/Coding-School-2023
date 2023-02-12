@@ -5,74 +5,68 @@ using PetShop.Model;
 
 namespace MVC.Controllers
 {
-    public class EmployeeContoller : Controller
+    public class PetController : Controller
     {
-        private readonly EntityInterface<Employee> _employeeRepo;
-        public EmployeeContoller(EntityInterface<Employee> employeeRepo)
+        // GET: PetController
+        public readonly EntityInterface<Pet> _petRepo;
+        public PetController(EntityInterface<Pet> petRepo )
         {
-            _employeeRepo = employeeRepo;
+            _petRepo= petRepo;
         }
-
-        // GET: EmployeeContoller
-
         public ActionResult Index()
         {
-           // var text = "test";
-            var employees = _employeeRepo.GetAll().ToList();
-            return View(model: employees);
-           // return View(model: text);
+            var pets = _petRepo.GetAll();
+
+            return View(model:pets);
         }
 
-        // GET: EmployeeContoller/Details/5
+        // GET: PetController/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var employee = _employeeRepo.GetById(id.Value);
+            var pet= _petRepo.GetById(id.Value);
 
-            if (employee == null)
+            if (pet == null)
             {
                 return NotFound();
             }
-            return View(model: employee);
-
-
+            return View(model: pet);
+            
         }
 
-        // GET: EmployeeContoller/Create
+        // GET: PetController/Create
         public ActionResult Create()
         {
+
+            
             return View();
         }
 
-        // POST: EmployeeContoller/Create
+        // POST: PetController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EmployeeCreateDto employee)
+        public ActionResult Create(PetCreateDto pet)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            var dbEmployee = new Employee(employee.Name, employee.Surname, employee.EmployeeType, employee.SalaryPerMonth);
-
-
-            _employeeRepo.Add(dbEmployee);
+            var dbPet = new Pet(pet.Breed, pet.AnimalType, pet.PetStatus, pet.Price, pet.Cost);
+            _petRepo.Add(dbPet);
             return RedirectToAction("Index");
-        }
-               
-    
+            }
+        
 
-
-        // GET: EmployeeContoller/Edit/5
+        // GET: PetController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: EmployeeContoller/Edit/5
+        // POST: PetController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -87,13 +81,13 @@ namespace MVC.Controllers
             }
         }
 
-        // GET: EmployeeContoller/Delete/5
+        // GET: PetController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: EmployeeContoller/Delete/5
+        // POST: PetController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

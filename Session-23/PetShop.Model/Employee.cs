@@ -13,15 +13,12 @@ namespace PetShop.Model
 
             Transactions = new List<Transaction>();
         }
-        public Employee()
-        {
-
-        }
+      
        
-        public string? Name { get; set; }
-        public string? Surname { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
         public EmployeeType EmployeeType { get; set; }
-        public int? SalaryPerMonth { get; set; }
+        public int SalaryPerMonth { get; set; }
 
         // Relations
         public List<Transaction> Transactions { get; set; }

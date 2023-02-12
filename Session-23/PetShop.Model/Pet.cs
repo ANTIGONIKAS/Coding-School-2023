@@ -25,4 +25,13 @@ namespace PetShop.Model
         // Relations
         public List<Transaction> Transactions { get; set; }
     }
+
+    public class PetCreateDto
+    {
+        public string Breed { get; set; } = null!;
+        public AnimalType AnimalType { get; set; }
+        public PetStatus PetStatus { get; set; }
+        public decimal Price { get; set; }
+        public decimal Cost { get; set; }
+    }
 }
