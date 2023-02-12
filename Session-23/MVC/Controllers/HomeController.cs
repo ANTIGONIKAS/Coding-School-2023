@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC.Models;
+using PetShop.EF.Repositories;
+using PetShop.Model;
 using System.Diagnostics;
 
 namespace MVC.Controllers
@@ -8,15 +10,22 @@ namespace MVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+      
+        
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+          
         }
 
         public IActionResult Index()
         {
-            var name = "Antigoni";
-            return View(model:name);
+            
+           
+           
+            return View();
+
+            
         }
 
         public IActionResult Privacy()

@@ -1,4 +1,5 @@
-﻿using PetShop.EF.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using PetShop.EF.Context;
 using PetShop.Model;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace PetShop.EF.Repositories
             using var context = new PetShopDbContext();
             if (entity.Id != 0)
                 throw new ArgumentException("Given entity should not have Id set", nameof(entity));
-            context.Customers.Add(entity);
+            context.Add(entity);
             context.SaveChanges();
         }
 
@@ -25,7 +26,7 @@ namespace PetShop.EF.Repositories
             var dbCustomer = context.Customers.Where(customer => customer.Id == id).SingleOrDefault();
             if (dbCustomer is null)
                 throw new KeyNotFoundException($"Given id '{id}' was not found in database");
-            context.Customers.Remove(dbCustomer);
+            context.Remove(dbCustomer);
             context.SaveChanges();
 
         }
@@ -34,14 +35,15 @@ namespace PetShop.EF.Repositories
         {
             using var context = new PetShopDbContext();
 
-            return context.Customers.ToList();
+            return context.Customers.Include(customer => customer.Transactions).ToList();
         }
 
         public Customer? GetById(int id)
         {
             using var context = new PetShopDbContext();
 
-            var dbCustomer=context.Customers.Where(customer => customer.Id == id).SingleOrDefault();
+            var dbCustomer=context.Customers.Where(customer => customer.Id == id ).Include(customer=>customer.Transactions).SingleOrDefault();
+         
             if (dbCustomer is null)
             {
                 throw new KeyNotFoundException($"Given id '{id}' was not found in database");

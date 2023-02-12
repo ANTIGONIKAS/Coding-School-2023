@@ -72,8 +72,9 @@ namespace PetShop.EF.Repositories
             }
             dbEmployee.Name = entity.Name;
             dbEmployee.Surname = entity.Surname;
-            dbEmployee.SalaryPerMonth = entity.SalaryPerMonth;
             dbEmployee.EmployeeType = entity.EmployeeType;
+            dbEmployee.SalaryPerMonth = entity.SalaryPerMonth;
+           
             context.SaveChanges();
 
         }
