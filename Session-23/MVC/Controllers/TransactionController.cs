@@ -1,99 +1,100 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using PetShop.EF.Repositories;
-using PetShop.Model;
+﻿//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Mvc;
+//using PetShop.EF.Repositories;
+//using PetShop.Model;
 
-namespace MVC.Controllers
-{
-    public class TransactionController : Controller
-    {
-        private readonly EntityInterface<Customer> _customerRepo;
-        private readonly EntityInterface<Transaction> _transactionRepo;
-        public TransactionController(EntityInterface<Customer> customerRepo,EntityInterface<Transaction>
-            transactionRepo)
-        {
-              _customerRepo= customerRepo;
-            _transactionRepo= transactionRepo;
+//namespace MVC.Controllers
+//{
+//    public class TransactionController : Controller
+//    {
+//        private readonly EntityInterface<Customer> _customerRepo;
+//        private readonly EntityInterface<Transaction> _transactionRepo;
+//        public TransactionController(EntityInterface<Customer> customerRepo, EntityInterface<Transaction>
+//            transactionRepo)
+//        {
+//            _customerRepo = customerRepo;
+//            _transactionRepo = transactionRepo;
 
-        }
-        // GET: TransactionController
-        public ActionResult Index()
-        {
-            return View();
-        }
+//        }
+//        // GET: TransactionController
+//        public ActionResult Index()
+//        {
+//            return View();
+//        }
 
-        // GET: TransactionController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+//        // GET: TransactionController/Details/5
+//        public ActionResult Details(int id)
+//        {
+//            return View();
+//        }
+//    }
 
         // GET: TransactionController/Create
-        public ActionResult Create()
+        //public ActionResult Create()
 
 
-        {
+//        {
 
-            var transaction = new TransactionCreateDto();
-            var customers= _customerRepo.GetAll();
-           // return View(model:new Transaction);
-        }
+//            var transaction = new TransactionCreateDto();
+//            var customers= _customerRepo.GetAll();
+//           // return View(model:new Transaction);
+//        }
 
-        // POST: TransactionController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+//        // POST: TransactionController/Create
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Create(IFormCollection collection)
+//        {
+//            try
+//            {
+//                return RedirectToAction(nameof(Index));
+//            }
+//            catch
+//            {
+//                return View();
+//            }
+//        }
 
-        // GET: TransactionController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+//        // GET: TransactionController/Edit/5
+//        public ActionResult Edit(int id)
+//        {
+//            return View();
+//        }
 
-        // POST: TransactionController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+//        // POST: TransactionController/Edit/5
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Edit(int id, IFormCollection collection)
+//        {
+//            try
+//            {
+//                return RedirectToAction(nameof(Index));
+//            }
+//            catch
+//            {
+//                return View();
+//            }
+//        }
 
-        // GET: TransactionController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+//        // GET: TransactionController/Delete/5
+//        public ActionResult Delete(int id)
+//        {
+//            return View();
+//        }
 
-        // POST: TransactionController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-    }
-}
+//        // POST: TransactionController/Delete/5
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Delete(int id, IFormCollection collection)
+//        {
+//            try
+//            {
+//                return RedirectToAction(nameof(Index));
+//            }
+//            catch
+//            {
+//                return View();
+//            }
+//        }
+//    }
+//}

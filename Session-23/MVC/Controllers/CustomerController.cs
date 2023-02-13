@@ -55,28 +55,21 @@ namespace MVC.Controllers
         {
 
 
-            try
+            if (!ModelState.IsValid)
             {
-                if (!ModelState.IsValid)
-                {
-                    if (!ModelState.IsValid)
-                    {
-                        var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
-                        return View();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
 
+                return View();
             }
+
+
             var dbCustomer = new Customer(customer.Name, customer.Surname,
                 customer.Phone, customer.Tin);
 
             _customerRepo.Add(dbCustomer);
             return RedirectToAction("Index");
         }
+
+    
 
         // GET: CustomerController/Edit/5
         public ActionResult Edit(int id)
