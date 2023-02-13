@@ -8,20 +8,21 @@ namespace MVC.Controllers
 {
     public class CustomerController : Controller
 
-    {    private readonly EntityInterface<Customer> _customerRepo;
+    {
+        private readonly EntityInterface<Customer> _customerRepo;
         public CustomerController(EntityInterface<Customer> customerRepo)
         {
 
-               _customerRepo = customerRepo ; 
+            _customerRepo = customerRepo;
         }
-       
-        
+
+
         // GET: CustomerController
         public ActionResult Index()
 
         {       //list of customers
-            var customers= _customerRepo.GetAll().ToList();
-            return View(model:customers);
+            var customers = _customerRepo.GetAll().ToList();
+            return View(model: customers);
         }
 
         // GET: CustomerController/Details/5
@@ -37,7 +38,7 @@ namespace MVC.Controllers
             {
                 return NotFound();
             }
-            return View(model:customer);
+            return View(model: customer);
 
         }
 
@@ -70,8 +71,8 @@ namespace MVC.Controllers
                 Console.WriteLine(ex.Message);
 
             }
-            var dbCustomer = new Customer(customer.Name ,customer.Surname,
-                customer.Phone,customer.Tin);
+            var dbCustomer = new Customer(customer.Name, customer.Surname,
+                customer.Phone, customer.Tin);
 
             _customerRepo.Add(dbCustomer);
             return RedirectToAction("Index");
@@ -80,28 +81,65 @@ namespace MVC.Controllers
         // GET: CustomerController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var dbCustomer = _customerRepo.GetById(id);
+            if (dbCustomer == null)
+            {
+                return NotFound();
+            }
+            var viewCustomer = new CustomerEditDto();
+            viewCustomer.Id = dbCustomer.Id;
+            viewCustomer.Name = dbCustomer.Name;
+            viewCustomer.Surname = dbCustomer.Surname;
+            viewCustomer.Phone = dbCustomer.Phone;
+            viewCustomer.Tin = dbCustomer.Tin;
+
+            return View(model: dbCustomer); ;
         }
 
         // POST: CustomerController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, CustomerEditDto customer)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
+
                 return View();
             }
+            var dbCustomer = _customerRepo.GetById(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            dbCustomer.Name = customer.Name;
+            dbCustomer.Surname = customer.Surname;
+            dbCustomer.Phone = customer.Phone;
+            dbCustomer.Tin = customer.Tin;
+
+            _customerRepo.Update(id, dbCustomer);
+            return RedirectToAction(nameof(Index));
+
         }
+
+
 
         // GET: CustomerController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var dbCustomer = _customerRepo.GetById(id);
+            if (dbCustomer == null)
+            {
+                return NotFound();
+            }
+            var viewCustomer = new CustomerDeleteDto();
+            viewCustomer.Id = dbCustomer.Id;
+            viewCustomer.Name = dbCustomer.Name;
+            viewCustomer.Surname = dbCustomer.Surname;
+            viewCustomer.Phone = dbCustomer.Phone;
+            viewCustomer.Tin = dbCustomer.Tin;
+
+
+            return View(model: viewCustomer);
         }
 
         // POST: CustomerController/Delete/5
@@ -109,14 +147,15 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _customerRepo.Delete(id);
+            return RedirectToAction(nameof(Index));
+
         }
     }
+           
+            
+            
+           
+        
+    
 }

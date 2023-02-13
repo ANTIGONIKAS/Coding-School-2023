@@ -63,28 +63,67 @@ namespace MVC.Controllers
         // GET: PetController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var dbPet = _petRepo.GetById(id);
+            if (dbPet == null)
+            {
+                return NotFound();
+            }
+            var viewPet = new PetEditDto();
+            viewPet.Id = dbPet.Id;
+            viewPet.Breed = dbPet.Breed;
+            viewPet.AnimalType = dbPet.AnimalType;
+            viewPet.PetStatus = dbPet.PetStatus;
+            viewPet.Price = dbPet.Price;
+            viewPet.Cost = dbPet.Cost;
+
+
+            return View(model: dbPet); 
+            
         }
 
         // POST: PetController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, PetEditDto pet)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
+
                 return View();
             }
+            var dbPet = _petRepo.GetById(id);
+            if (pet == null)
+            {
+                return NotFound();
+            }
+            dbPet.Breed = pet.Breed;
+            dbPet.AnimalType=dbPet.AnimalType;
+            dbPet.PetStatus=dbPet.PetStatus;
+            dbPet.Price=dbPet.Price;
+            dbPet.Cost=dbPet.Cost;
+
+            _petRepo.Update(id, dbPet);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: PetController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var dbPet = _petRepo.GetById(id);
+            if (dbPet == null)
+            {
+                return NotFound();
+            }
+            var viewPet = new PetDeleteDto();
+            viewPet.Id = dbPet.Id;
+            viewPet.Breed = dbPet.Breed;
+            viewPet.AnimalType=dbPet.AnimalType;
+            viewPet.PetStatus = dbPet.PetStatus;
+            viewPet.Price = dbPet.Price;
+            viewPet.Cost=dbPet.Cost;
+
+
+            return View(model: viewPet);
         }
 
         // POST: PetController/Delete/5
@@ -92,14 +131,8 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _petRepo.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

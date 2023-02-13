@@ -63,28 +63,66 @@ namespace MVC.Controllers
     // GET: PetFoodController/Edit/5
         public ActionResult Edit(int id)
     {
-        return View();
+            var dbPetFood = _petFoodRepo.GetById(id);
+            if (dbPetFood == null)
+            {
+                return NotFound();
+            }
+            var viewPetFood = new PetFoodEditDto();
+            viewPetFood.Id = dbPetFood.Id;
+            viewPetFood.AnimalType = dbPetFood.AnimalType;
+            viewPetFood.Price = dbPetFood.Price;
+            viewPetFood.Cost = dbPetFood.Cost;
+
+
+            return View(model: dbPetFood); ;
+
+           
     }
 
     // POST: PetFoodController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, PetFoodEditDto petFood)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
+
                 return View();
             }
+            var dbPetFood = _petFoodRepo.GetById(id);
+            if (petFood == null)
+            {
+                return NotFound();
+            }
+            dbPetFood.AnimalType = petFood.AnimalType;
+            
+            dbPetFood.Price = dbPetFood.Price;
+            dbPetFood.Cost = dbPetFood.Cost;
+
+            _petFoodRepo.Update(id, dbPetFood);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: PetFoodController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var dbPetFood = _petFoodRepo.GetById(id);
+            if (dbPetFood == null)
+            {
+                return NotFound();
+            }
+            var viewPetFood = new PetFoodDeleteDto();
+            viewPetFood.Id = dbPetFood.Id;
+            viewPetFood.AnimalType = dbPetFood.AnimalType;
+           ;
+            viewPetFood.Price = dbPetFood.Price;
+            viewPetFood.Cost = dbPetFood.Cost;
+
+
+            return View(model: viewPetFood);
+
+           
         }
 
         // POST: PetFoodController/Delete/5
@@ -92,14 +130,8 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _petFoodRepo.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

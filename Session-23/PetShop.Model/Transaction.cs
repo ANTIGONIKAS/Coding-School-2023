@@ -32,4 +32,28 @@
         public int PetFoodId { get; set; }
         public PetFood PetFood { get; set; } = null!;
     }
+
+    public class TransactionCreateDto
+    {
+        public DateTime Date { get; set; }
+        public decimal PetPrice { get; set; }
+        public int PetFoodQty { get; set; }
+        public decimal PetFoodPrice { get; set; }
+        public decimal TotalPrice { get; set; }
+
+        public int CustomerId { get; set; }
+        public Employee Employee { get; set; }
+        public int PetId { get; set; }
+
+        public int PetFoodId {get;set;}
+
+        public List<Customer> Customers { get; set; }
+        public List<Employee> Employees { get; set; }
+        public List<Pet> Pets { get; set; } 
+
+        public List<PetFood> PetFoods { get; set; }
+        
+
+
+    }
 }
