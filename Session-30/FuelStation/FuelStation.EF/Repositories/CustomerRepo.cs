@@ -58,7 +58,7 @@ namespace FuelStation.EF.Repositories
             dbCustomer.Name = entity.Name;
             dbCustomer.Surname = entity.Surname;
             dbCustomer.CardNumber = entity.CardNumber;
-           // dbCustomer.Transactions = entity.Transactions;
+           
             context.SaveChanges();
 
         }

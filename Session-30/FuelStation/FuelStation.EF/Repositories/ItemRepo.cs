@@ -28,9 +28,7 @@ namespace FuelStation.EF.Repositories
                 return;
             context.Items.Remove(dbItem);
             context.SaveChanges();
-
-              
-
+    
 
         }
 
