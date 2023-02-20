@@ -28,15 +28,7 @@ namespace FuelStation.Model
 
 
         //Relations
-        public List<Transaction> Transactions { get; set; } = null!;
+        public List<Transaction> Transactions { get; set; } 
 
-
-        //public string FullName
-        //{
-        //    get
-        //    {
-        //        return string.Format("{0} {1}", Name, Surname);
-        //    }
-        //}
     }
 }

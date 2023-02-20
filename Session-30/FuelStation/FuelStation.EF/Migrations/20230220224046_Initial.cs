@@ -35,7 +35,7 @@ namespace FuelStation.EF.Migrations
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     HireDateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HireDateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HireDateEnd = table.Column<DateTime>(type: "datetime2", nullable: true),
                     SalaryPerMonth = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     EmployeeType = table.Column<int>(type: "int", nullable: false)
                 },
@@ -94,7 +94,8 @@ namespace FuelStation.EF.Migrations
                 name: "TransactionLines",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     ItemPrice = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     NetValue = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
