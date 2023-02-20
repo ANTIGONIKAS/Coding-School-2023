@@ -12,7 +12,7 @@ namespace FuelStation.Model
 
         public Employee(string name,string surname,DateTime hireDateStart,DateTime hireDateEnd,decimal salaryPerMonth,EmployeeType employeeType)
         {
-            Id=Guid.NewGuid();
+            
             Name= name;
             Surname= surname;
             HireDateStart= hireDateStart;
@@ -21,7 +21,7 @@ namespace FuelStation.Model
             EmployeeType= employeeType;
             Transactions= new List<Transaction>();
         }
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

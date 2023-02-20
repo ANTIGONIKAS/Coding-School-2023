@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Win", "FuelStat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Model", "FuelStation.Model\FuelStation.Model.csproj", "{39AF3361-EF7E-4B4F-BB57-9C392F6807A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.EF", "FuelStation.EF\FuelStation.EF.csproj", "{C2F0A990-F994-4171-BD78-0C5E1335F821}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Blazor.Web.Server", "FuelStation.Blazor.Web\Server\FuelStation.Blazor.Web.Server.csproj", "{5A126623-7875-4EAE-8AA2-C558A7B21A4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Blazor.Web.Client", "FuelStation.Blazor.Web\Client\FuelStation.Blazor.Web.Client.csproj", "{0A13CFD4-C86D-4CF4-A12D-ABF0995C69F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Blazor.Web.Shared", "FuelStation.Blazor.Web\Shared\FuelStation.Blazor.Web.Shared.csproj", "{EF88B631-472A-4C25-A196-FF0F3A357448}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +29,22 @@ Global
 		{39AF3361-EF7E-4B4F-BB57-9C392F6807A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39AF3361-EF7E-4B4F-BB57-9C392F6807A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39AF3361-EF7E-4B4F-BB57-9C392F6807A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2F0A990-F994-4171-BD78-0C5E1335F821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F0A990-F994-4171-BD78-0C5E1335F821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F0A990-F994-4171-BD78-0C5E1335F821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F0A990-F994-4171-BD78-0C5E1335F821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A126623-7875-4EAE-8AA2-C558A7B21A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A126623-7875-4EAE-8AA2-C558A7B21A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A126623-7875-4EAE-8AA2-C558A7B21A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A126623-7875-4EAE-8AA2-C558A7B21A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A13CFD4-C86D-4CF4-A12D-ABF0995C69F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A13CFD4-C86D-4CF4-A12D-ABF0995C69F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A13CFD4-C86D-4CF4-A12D-ABF0995C69F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A13CFD4-C86D-4CF4-A12D-ABF0995C69F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF88B631-472A-4C25-A196-FF0F3A357448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF88B631-472A-4C25-A196-FF0F3A357448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF88B631-472A-4C25-A196-FF0F3A357448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF88B631-472A-4C25-A196-FF0F3A357448}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

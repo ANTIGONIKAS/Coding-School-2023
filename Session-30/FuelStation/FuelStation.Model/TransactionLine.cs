@@ -8,18 +8,17 @@ namespace FuelStation.Model
 {
     public class TransactionLine
     {
-        public TransactionLine(int quantity,decimal itemPrice,decimal netValue,decimal discountPercent,decimal discountValue,decimal totalValue,Guid transactionId,Guid itemId) 
+        public TransactionLine(int quantity,decimal itemPrice,decimal netValue,decimal discountPercent,decimal discountValue,decimal totalValue) 
         {
            
-            Id=Guid.NewGuid();
+            
             Quantity= quantity;
             ItemPrice= itemPrice;
             NetValue= netValue;
             DiscountPercent= discountPercent;
             DiscountValue= discountValue;
             TotalValue= totalValue;
-            TransactionId= transactionId;
-            ItemId = itemId;
+         
                 
         }
         public Guid Id { get; set; }
@@ -31,10 +30,10 @@ namespace FuelStation.Model
         public decimal TotalValue { get; set; }
 
         //relations
-        public Guid TransactionId { get; set; }
+        public int TransactionId { get; set; }
         public Transaction Transaction { get; set; } = null!;
 
-        public Guid ItemId { get; set; }
+        public int ItemId { get; set; }
         public Item Item { get; set; } = null!;
 
     }

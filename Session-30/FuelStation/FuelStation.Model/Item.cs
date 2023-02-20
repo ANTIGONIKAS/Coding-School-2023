@@ -12,7 +12,7 @@ namespace FuelStation.Model
 
         public Item(string code,string description,ItemType itemType,decimal price,decimal cost)
         {
-            Id=Guid.NewGuid();
+            
             Code=code;
             Description=description;
             ItemType=itemType;
@@ -21,7 +21,7 @@ namespace FuelStation.Model
 
             TransactionLines=new List<TransactionLine>();
         }
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public ItemType ItemType { get; set; }
