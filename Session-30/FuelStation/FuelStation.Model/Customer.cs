@@ -11,6 +11,7 @@ namespace FuelStation.Model
 
         public Customer(string name, string surname, string cardNumber)
         {
+            Id= Guid.NewGuid();
             Name = name;
             Surname = surname;
             CardNumber = cardNumber;
@@ -20,7 +21,7 @@ namespace FuelStation.Model
         }
       
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string CardNumber { get; set; }
