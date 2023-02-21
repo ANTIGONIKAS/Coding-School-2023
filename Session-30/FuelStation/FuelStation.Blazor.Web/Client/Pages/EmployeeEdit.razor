@@ -1,0 +1,128 @@
+﻿@page "/employeelist/edit/{Id:int?}"
+@using FuelStation.Blazor.Web.Shared
+@using FuelStation.Model
+@using FuelStation.Model.Enums;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+
+<h3>Employee Edit</h3>
+
+@if (Employee == null)
+{
+    <p>loading ...</p>
+}
+else
+{
+    <div class="row mt-2">
+        <div class="col-md-6">
+            <label class="form-label">Name</label>
+            <input class="form-control" @bind="@Employee.Name"/>
+
+        </div>
+
+    </div>
+    
+        <div class="col-md-6">
+            <label class="form-label">Surname</label>
+            <input class="form-control" @bind="@Employee.Surname" />
+        </div>
+    
+
+  
+   
+        <div class="col-md-6">
+            <label class="form-label">HireDateStart</label>
+            <input class="form-control" @bind="@Employee.HireDateStart" />
+    
+    </div>
+    
+        <div class="col-md-6">
+            <label class="form-label">HireDateEnd</label>
+            <input class="form-control" @bind="@Employee.HireDateEnd" />
+        </div>
+    
+   
+        <div class="col-md-6">
+            <label class="form-label">SalaryPerMonth</label>
+            <input class="form-control" @bind="@Employee.SalaryPerMonth" />
+        </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Employee Type</label>
+     <select class="form-control" @bind="@Employee.EmployeeType">
+        @foreach (var enumValue in Enum.GetValues<EmployeeType>())
+        {
+            <option value="@enumValue">@enumValue</option>
+        }
+
+
+
+
+     </select>
+
+
+
+
+      
+   </div>
+
+
+    <div class="row mt-2">
+        <div class="col">
+            <button class="btn btn-success" @onclick="OnSave">Save</button>
+            <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
+        </div>
+    </div>
+
+    @code {
+    [Parameter] public int? Id { get; set; }
+    EmployeeEditDto Employee { get; set; }
+    bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id == null)
+        {
+            Employee = new();
+
+
+        }
+        else
+        {
+            Employee = await httpClient.GetFromJsonAsync<EmployeeEditDto>($"employee/{Id}");
+        }
+      
+    }
+    
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("employeelist");
+    }
+    private async Task OnSave()
+    {
+        HttpResponseMessage? response = null;
+        if (Id == null)
+        {
+            response = await httpClient.PostAsJsonAsync("employee", Employee);
+        }
+        else
+        {
+            response = await httpClient.PutAsJsonAsync("employee", Employee);
+        }
+        if (response.IsSuccessStatusCode)
+        {
+            navigationManager.NavigateTo("/employeelist");
+        }
+        else
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            await jsRuntime.InvokeVoidAsync("alert", error);
+        }
+    }
+    }
+}
+
+
+
+

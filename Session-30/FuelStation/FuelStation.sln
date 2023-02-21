@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Win", "FuelStation.Win\FuelStation.Win.csproj", "{3033F95C-0D9D-4806-BD84-1BD863166C2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuelStation.Win", "FuelStation.Win\FuelStation.Win.csproj", "{3033F95C-0D9D-4806-BD84-1BD863166C2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Model", "FuelStation.Model\FuelStation.Model.csproj", "{39AF3361-EF7E-4B4F-BB57-9C392F6807A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuelStation.Model", "FuelStation.Model\FuelStation.Model.csproj", "{39AF3361-EF7E-4B4F-BB57-9C392F6807A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.EF", "FuelStation.EF\FuelStation.EF.csproj", "{C2F0A990-F994-4171-BD78-0C5E1335F821}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuelStation.EF", "FuelStation.EF\FuelStation.EF.csproj", "{C2F0A990-F994-4171-BD78-0C5E1335F821}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Blazor.Web.Server", "FuelStation.Blazor.Web\Server\FuelStation.Blazor.Web.Server.csproj", "{5A126623-7875-4EAE-8AA2-C558A7B21A4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuelStation.Blazor.Web.Server", "FuelStation.Blazor.Web\Server\FuelStation.Blazor.Web.Server.csproj", "{5A126623-7875-4EAE-8AA2-C558A7B21A4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Blazor.Web.Client", "FuelStation.Blazor.Web\Client\FuelStation.Blazor.Web.Client.csproj", "{0A13CFD4-C86D-4CF4-A12D-ABF0995C69F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuelStation.Blazor.Web.Client", "FuelStation.Blazor.Web\Client\FuelStation.Blazor.Web.Client.csproj", "{0A13CFD4-C86D-4CF4-A12D-ABF0995C69F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelStation.Blazor.Web.Shared", "FuelStation.Blazor.Web\Shared\FuelStation.Blazor.Web.Shared.csproj", "{EF88B631-472A-4C25-A196-FF0F3A357448}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuelStation.Blazor.Web.Shared", "FuelStation.Blazor.Web\Shared\FuelStation.Blazor.Web.Shared.csproj", "{EF88B631-472A-4C25-A196-FF0F3A357448}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
