@@ -28,7 +28,7 @@ namespace FuelStation.Model
 
 
         //Relations
-        public List<Transaction> Transactions { get; set; } 
+        public List<Transaction> Transactions { get; set; } = new List<Transaction>();
 
     }
 }
