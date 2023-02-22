@@ -49,13 +49,13 @@ else
      
 
 @code {
-   bool isLoading { get; set; } = true;
+  
     private List<ItemListDto> itemList = new();
-
+    bool isLoading { get; set; } = true;
    
 
     
-    string errorMessage = null;
+  
 
 
     protected override async Task OnInitializedAsync()
@@ -77,27 +77,22 @@ else
 
     private void EditItem(ItemListDto item)
     {
-        navigationManager.NavigateTo($"itemList/edit/{item.Id}");
+        navigationManager.NavigateTo($"itemlist/edit/{item.Id}");
     }
 
     private async Task DeleteItem(ItemListDto item)
     {
-        errorMessage = null;
+       
         var comfirm = await jsRuntime.InvokeAsync<bool>("confirm", "Delete Item. Are you sure?");
         if (comfirm)
         {
             var response = await httpClient.DeleteAsync($"item/{item.Id}");
-            if (response.IsSuccessStatusCode)
-            {
+            
+                response.EnsureSuccessStatusCode();
                 await LoadItemsFromServer();
-            }
-            else
-            {
-                errorMessage = await response.Content.ReadAsStringAsync();
-                //await jsRuntime.InvokeVoidAsync("alert", error);
-            }
+           
         }
     }
+}
   
-}
-}
+

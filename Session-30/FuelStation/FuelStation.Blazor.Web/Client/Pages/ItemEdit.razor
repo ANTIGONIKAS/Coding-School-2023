@@ -10,12 +10,15 @@
 
 <h3>Item Edit</h3>
 
-@if (isLoading)
+@if (Item==null)
 {
     <p>Loading ...</p>
 }
 else
 {
+    <EditForm Model="Item" OnValidSubmit="OnSave">
+		<DataAnnotationsValidator />
+		<ValidationSummary />
     <div class="row">
         <div class="col-md-6">
             <label class="form-label">Code</label>
@@ -50,20 +53,22 @@ else
         </div>
 
     </div>
+    </EditForm>
 }
 
 
 @code {
     [Parameter] public int? Id { get; set; }
-    ItemEditDto Item { get; set; } = null!;
-    private List<ItemListDto> itemList = new();
-    bool isLoading { get; set; } = true;
+    ItemEditDto Item { get; set; } = new();
+   
 
     protected override async Task OnInitializedAsync()
     {
         if (Id == null)
         {
             Item = new();
+           
+      
         }
         else
         {
