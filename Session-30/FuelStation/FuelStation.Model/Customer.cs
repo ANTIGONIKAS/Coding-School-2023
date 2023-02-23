@@ -19,7 +19,10 @@ namespace FuelStation.Model
             Transactions = new List<Transaction>();
 
         }
-      
+        public Customer()
+        {
+
+        }
 
         public int Id { get; set; }
         public string Name { get; set; }

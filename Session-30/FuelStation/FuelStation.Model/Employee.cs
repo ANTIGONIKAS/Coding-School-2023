@@ -21,6 +21,11 @@ namespace FuelStation.Model
             EmployeeType= employeeType;
             Transactions= new List<Transaction>();
         }
+
+        public Employee()
+        {
+
+        }
         public int Id { get; set; }
 
         public string? Name { get; set; }

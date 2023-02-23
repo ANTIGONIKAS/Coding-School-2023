@@ -21,6 +21,10 @@ namespace FuelStation.Model
 
             TransactionLines=new List<TransactionLine>();
         }
+        public Item()
+        {
+
+        }
         public int Id { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
