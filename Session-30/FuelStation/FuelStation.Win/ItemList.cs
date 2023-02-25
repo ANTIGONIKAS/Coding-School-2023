@@ -1,4 +1,5 @@
-﻿using FuelStation.Model;
+﻿using FuelStation.Blazor.Web.Shared;
+using FuelStation.Model;
 using FuelStation.Model.Enums;
 using System;
 using System.Collections.Generic;
@@ -6,15 +7,23 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FuelStation.Win
 {
     public partial class ItemList : Form
     {
-         List<Item> items;
+        private readonly HttpClient client = new HttpClient(new HttpClientHandler())
+        {
+            BaseAddress = new Uri("https://localhost:7216")
+        };
+
+        private List<ItemListDto> list = new List<ItemListDto>();
+        List<Item> items;
         public ItemList()
         {
             InitializeComponent();
@@ -22,12 +31,42 @@ namespace FuelStation.Win
 
         private void ItemList_Load(object sender, EventArgs e)
         {
-            PopulateItems();
+            //PopulateItems();
             SetControls();
 
             
         }
+        private void btnLoadItems_Click(object sender, EventArgs e)
+        {
+            HttpResponseMessage response = client.GetAsync("/item").Result;
+            var item = response.Content.ReadAsAsync<IEnumerable<ItemListDto>>().Result;
+            bsItems.DataSource = item;
+            grvItems.DataSource = bsItems;
 
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Item item = new Item();
+            if (txtCode.Text != null && txtDes.Text != null && colItemType != null && txtPrice.Text != null && txtCost.Text != null)
+            {
+                Item newitem = new Item()
+                {
+                    Code = txtCode.Text,
+                    Description = txtDes.Text,
+                    ItemType = (ItemType)Enum.Parse(typeof(ItemType), colItemType.ToString()),
+                    Price = Convert.ToDecimal(txtPrice.Text),
+                    Cost = Convert.ToDecimal(txtCost.Text)
+                };
+
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("https://localhost:7216");
+                HttpResponseMessage response = client.PostAsJsonAsync("/item", item).Result;
+                bsItems.DataSource = newitem;
+                grvItems.DataSource = bsItems;
+            }
+
+        }
 
 
         private void PopulateItems()
@@ -82,8 +121,10 @@ namespace FuelStation.Win
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            PopulateItems();
+            //PopulateItems();
         }
+
+        
     }
 }
 

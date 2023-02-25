@@ -36,6 +36,7 @@
             this.colTotalValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.bsTransactions = new System.Windows.Forms.BindingSource(this.components);
+            this.btnLoadTrans = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).BeginInit();
             this.SuspendLayout();
@@ -90,11 +91,22 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // btnLoadTrans
+            // 
+            this.btnLoadTrans.Location = new System.Drawing.Point(534, 12);
+            this.btnLoadTrans.Name = "btnLoadTrans";
+            this.btnLoadTrans.Size = new System.Drawing.Size(113, 23);
+            this.btnLoadTrans.TabIndex = 2;
+            this.btnLoadTrans.Text = "Load Transactions";
+            this.btnLoadTrans.UseVisualStyleBackColor = true;
+            this.btnLoadTrans.Click += new System.EventHandler(this.btnLoadTrans_Click);
+            // 
             // TransactionAndLineList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnLoadTrans);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.grvTransactions);
             this.Name = "TransactionAndLineList";
@@ -115,5 +127,6 @@
         private DataGridViewComboBoxColumn colPayMethod;
         private DataGridViewTextBoxColumn colTotalValue;
         private BindingSource bsTransactions;
+        private Button btnLoadTrans;
     }
 }

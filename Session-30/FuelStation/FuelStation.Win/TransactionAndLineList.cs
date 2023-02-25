@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
+using FuelStation.Blazor.Web.Shared;
 using FuelStation.Model;
 using FuelStation.Model.Enums;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
@@ -17,6 +19,12 @@ namespace FuelStation.Win
 {
     public partial class TransactionAndLineList : Form
     {
+        private readonly HttpClient client = new HttpClient(new HttpClientHandler())
+        {
+            BaseAddress = new Uri("https://localhost:7216")
+        };
+
+        private List<TransactionListDto> list= new List<TransactionListDto>();
         public TransactionAndLineList()
         {
             InitializeComponent();
@@ -30,6 +38,16 @@ namespace FuelStation.Win
 
             
            
+        }
+
+        private void btnLoadTrans_Click(object sender, EventArgs e)
+        {
+            HttpResponseMessage response = client.GetAsync("/transaction").Result;
+            var transaction = response.Content.ReadAsAsync<IEnumerable<TransactionListDto>>().Result;
+            bsTransactions.DataSource = transaction;
+            grvTransactions.DataSource = bsTransactions;
+
+
         }
         private void PopulateTransactions()
         {
@@ -99,5 +117,7 @@ namespace FuelStation.Win
         {
             PopulateTransactions();
         }
+
+        
     }
 }
