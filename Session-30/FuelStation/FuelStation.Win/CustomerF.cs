@@ -56,12 +56,12 @@ namespace FuelStation.Win
             response = await client.PostAsJsonAsync("customer", customer);
             if (response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Customer Created successfully!");
+                MessageBox.Show("Customer Created successfully");
                  PutCustomersToDataSource();
             }
             else
             {
-                MessageBox.Show("ERROR Creating customer.");
+                MessageBox.Show("Error Customer is not created.");
             }
         }
 
@@ -72,12 +72,12 @@ namespace FuelStation.Win
             response = await client.PutAsJsonAsync("customer", customer);
             if (response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Customer Updated successfully!");
+                MessageBox.Show("Customer Updated successfully");
                 PutCustomersToDataSource();
             }
             else
             {
-                MessageBox.Show("ERROR Updating customer.");
+                MessageBox.Show("Error customer is not updated.");
             }
         }
 
@@ -90,17 +90,17 @@ namespace FuelStation.Win
                 response = await client.DeleteAsync($"customer/{customer.Id}");
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Customer Deleted successfully!");
+                    MessageBox.Show("Customer Deleted successfully");
                     PutCustomersToDataSource();
                 }
                 else
                 {
-                    MessageBox.Show("ERROR Deleting customer.");
+                    MessageBox.Show("Error Customer is not deleted.");
                 }
             }
             else
             {
-                MessageBox.Show("Customer not selected.");
+                MessageBox.Show("Customer is not selected.");
             }
         }
 

@@ -48,7 +48,7 @@
             this.colName,
             this.colSurname,
             this.colCardNumber});
-            this.grvCustomers.Location = new System.Drawing.Point(61, 61);
+            this.grvCustomers.Location = new System.Drawing.Point(55, 50);
             this.grvCustomers.Name = "grvCustomers";
             this.grvCustomers.RowTemplate.Height = 25;
             this.grvCustomers.Size = new System.Drawing.Size(462, 225);
@@ -76,7 +76,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(87, 332);
+            this.btnSave.Location = new System.Drawing.Point(64, 304);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -86,7 +86,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(214, 333);
+            this.btnDelete.Location = new System.Drawing.Point(186, 304);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 2;
@@ -96,7 +96,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(350, 329);
+            this.btnClose.Location = new System.Drawing.Point(442, 304);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;

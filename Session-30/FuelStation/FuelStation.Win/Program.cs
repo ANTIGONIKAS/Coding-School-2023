@@ -11,8 +11,8 @@ namespace FuelStation.Win
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-           Application.Run(new CustomerF());
-         //  Application.Run(new ItemList());
+           //Application.Run(new CustomerF());
+          Application.Run(new ItemF());
             //Application.Run(new TransactionAndLineList());
 
         }
