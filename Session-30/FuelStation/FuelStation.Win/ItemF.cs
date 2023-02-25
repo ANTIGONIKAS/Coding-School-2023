@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace FuelStation.Win
 {
@@ -48,7 +49,22 @@ namespace FuelStation.Win
         //load items from database
         private async Task<List<ItemListDto>?> LoadItems()
         {
+            ItemListDto itemListDto = new();
+           
+
+
             var response = await client.GetAsync("item");
+
+            txtDes.Text = itemListDto.Description;
+
+            txtPrice.Text = itemListDto.Price.ToString();
+            txtCost.Text = itemListDto.Cost.ToString();
+            cbItemType.DataSource = Enum.GetValues(typeof(ItemType));
+
+            //to refresh list with new item created
+
+            RefreshList();
+
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -56,18 +72,29 @@ namespace FuelStation.Win
             }
             return null;
         }
-        //method create
-        private async Task CreateItem(ItemListDto item)
+
+
+        private void RefreshList()
         {
+            txtCode.Refresh();
+            txtDes.Refresh();
+            txtCost.Refresh();
+            txtPrice.Refresh();
+            cbItemType.Refresh();
+        }
+            //method create
+            private async Task CreateItem(ItemListDto item)
+        {
+            item.Code = txtCode.Text;
+            item.Description = txtDes.Text;
+
+            item.Price = decimal.Parse(txtPrice.Text);
+            item.Cost = decimal.Parse(txtCost.Text);
+            item.ItemType = (ItemType)Enum.Parse(typeof(ItemType), cbItemType.Text.ToString());
+
             HttpResponseMessage? response = null;
-
-            item.Price = decimal.Parse(colPrice.HeaderText);
-            item.Cost = decimal.Parse(colCost.HeaderText);
-            item.ItemType = (ItemType)Enum.Parse(typeof(ItemType), colItemType.HeaderText.ToString());
-
-
             response = await client.PostAsJsonAsync("item", item);
-            SetControls();
+           
 
 
             if (response.IsSuccessStatusCode)
@@ -86,6 +113,13 @@ namespace FuelStation.Win
         //method update
         private async Task UpdateItem(ItemListDto item)
         {
+            //item.Code = txtCode.Text;
+            //item.Description = txtDes.Text;
+
+            //item.Price = decimal.Parse(txtPrice.Text);
+            //item.Cost = decimal.Parse(txtCost.Text);
+            //item.ItemType = (ItemType)Enum.Parse(typeof(ItemType), cbItemType.Text.ToString());
+
             HttpResponseMessage? response = null;
             response = await client.PutAsJsonAsync("item", item);
             SetControls();
@@ -144,12 +178,12 @@ namespace FuelStation.Win
 
             if (item.Id == 0)
             {
-                CreateItem(item);
+                UpdateItem(item);
             }
             else
             {
 
-                UpdateItem(item);
+                CreateItem(item);
 
             }
         }

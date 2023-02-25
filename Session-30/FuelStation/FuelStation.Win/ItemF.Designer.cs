@@ -30,15 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             this.grvItems = new System.Windows.Forms.DataGridView();
-            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
             this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colItemType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblCode = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.lblItemType = new System.Windows.Forms.Label();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.lblCost = new System.Windows.Forms.Label();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.txtDes = new System.Windows.Forms.TextBox();
+            this.cbItemType = new System.Windows.Forms.ComboBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtCost = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grvItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +62,7 @@
             this.colItemType,
             this.colPrice,
             this.colCost});
-            this.grvItems.Location = new System.Drawing.Point(12, 54);
+            this.grvItems.Location = new System.Drawing.Point(26, 46);
             this.grvItems.Name = "grvItems";
             this.grvItems.RowTemplate.Height = 25;
             this.grvItems.Size = new System.Drawing.Size(587, 276);
@@ -122,11 +132,102 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblCode
+            // 
+            this.lblCode.AutoSize = true;
+            this.lblCode.Location = new System.Drawing.Point(649, 107);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(35, 15);
+            this.lblCode.TabIndex = 4;
+            this.lblCode.Text = "Code";
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(646, 147);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(67, 15);
+            this.lblDescription.TabIndex = 5;
+            this.lblDescription.Text = "Description";
+            // 
+            // lblItemType
+            // 
+            this.lblItemType.AutoSize = true;
+            this.lblItemType.Location = new System.Drawing.Point(649, 188);
+            this.lblItemType.Name = "lblItemType";
+            this.lblItemType.Size = new System.Drawing.Size(58, 15);
+            this.lblItemType.TabIndex = 6;
+            this.lblItemType.Text = "Item Type";
+            // 
+            // lblPrice
+            // 
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Location = new System.Drawing.Point(651, 220);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(33, 15);
+            this.lblPrice.TabIndex = 7;
+            this.lblPrice.Text = "Price";
+            // 
+            // lblCost
+            // 
+            this.lblCost.AutoSize = true;
+            this.lblCost.Location = new System.Drawing.Point(651, 257);
+            this.lblCost.Name = "lblCost";
+            this.lblCost.Size = new System.Drawing.Size(31, 15);
+            this.lblCost.TabIndex = 8;
+            this.lblCost.Text = "Cost";
+            // 
+            // txtCode
+            // 
+            this.txtCode.Location = new System.Drawing.Point(748, 107);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(110, 23);
+            this.txtCode.TabIndex = 9;
+            // 
+            // txtDes
+            // 
+            this.txtDes.Location = new System.Drawing.Point(748, 144);
+            this.txtDes.Name = "txtDes";
+            this.txtDes.Size = new System.Drawing.Size(110, 23);
+            this.txtDes.TabIndex = 10;
+            // 
+            // cbItemType
+            // 
+            this.cbItemType.FormattingEnabled = true;
+            this.cbItemType.Location = new System.Drawing.Point(748, 185);
+            this.cbItemType.Name = "cbItemType";
+            this.cbItemType.Size = new System.Drawing.Size(110, 23);
+            this.cbItemType.TabIndex = 11;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(748, 220);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(110, 23);
+            this.txtPrice.TabIndex = 12;
+            // 
+            // txtCost
+            // 
+            this.txtCost.Location = new System.Drawing.Point(748, 257);
+            this.txtCost.Name = "txtCost";
+            this.txtCost.Size = new System.Drawing.Size(110, 23);
+            this.txtCost.TabIndex = 13;
+            // 
             // ItemF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(931, 450);
+            this.Controls.Add(this.txtCost);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.cbItemType);
+            this.Controls.Add(this.txtDes);
+            this.Controls.Add(this.txtCode);
+            this.Controls.Add(this.lblCost);
+            this.Controls.Add(this.lblPrice);
+            this.Controls.Add(this.lblItemType);
+            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.lblCode);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -137,6 +238,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grvItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -152,5 +254,15 @@
         private Button btnSave;
         private Button btnDelete;
         private Button btnClose;
+        private Label lblCode;
+        private Label lblDescription;
+        private Label lblItemType;
+        private Label lblPrice;
+        private Label lblCost;
+        private TextBox txtCode;
+        private TextBox txtDes;
+        private ComboBox cbItemType;
+        private TextBox txtPrice;
+        private TextBox txtCost;
     }
 }
