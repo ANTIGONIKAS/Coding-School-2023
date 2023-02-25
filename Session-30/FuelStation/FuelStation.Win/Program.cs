@@ -12,8 +12,9 @@ namespace FuelStation.Win
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
           // Application.Run(new CustomerF());
-            Application.Run(new ItemF());
-           // Application.Run(new TransactionAndLineList());
+           // Application.Run(new ItemF());
+            Application.Run(new TransactionF());
+            
 
         }
     }
