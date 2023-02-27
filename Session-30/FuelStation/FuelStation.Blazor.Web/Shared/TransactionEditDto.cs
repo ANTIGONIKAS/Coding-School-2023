@@ -20,8 +20,8 @@ namespace FuelStation.Blazor.Web.Shared
 
         //relations
         public int EmployeeId { get; set; }
-        public Employee Employee { get; set; } = null!;
+      
         public int CustomerId { get; set; }
-        public Customer Customer { get; set; } = null!;
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FuelStation.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,14 +11,17 @@ using System.Windows.Forms;
 
 namespace FuelStation.Win
 {
-    public partial class MainMenu : Form
+    public partial class LoginF : Form
     {
-        public MainMenu()
+        public LoginF()
         {
             InitializeComponent();
         }
 
-        private void btnCashier_Click(object sender, EventArgs e)
+        private EmployeeType _type;
+
+
+        private void LoginF_Load(object sender, EventArgs e)
         {
 
         }
@@ -27,25 +31,21 @@ namespace FuelStation.Win
 
         }
 
-        private void btnTransaction_Click(object sender, EventArgs e)
-        {
-            if (txtCn == null)
-            {
-
-            }
-            {
-
-            }
-        }
-
-        private void btnGo_Click(object sender, EventArgs e)
+        private void btnCashier_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void txtCn_TextChanged(object sender, EventArgs e)
+        private void btnStaff_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+       
     }
 }

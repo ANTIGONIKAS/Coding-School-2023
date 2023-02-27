@@ -49,6 +49,7 @@
             this.cbItemType = new System.Windows.Forms.ComboBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtCost = new System.Windows.Forms.TextBox();
+            this.lblItems = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grvItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             this.SuspendLayout();
@@ -104,32 +105,35 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 354);
+            this.btnSave.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSave.Location = new System.Drawing.Point(26, 343);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(124, 354);
+            this.btnDelete.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnDelete.Location = new System.Drawing.Point(124, 343);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(524, 354);
+            this.btnClose.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnClose.Location = new System.Drawing.Point(538, 343);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblCode
@@ -162,7 +166,7 @@
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(651, 220);
+            this.lblPrice.Location = new System.Drawing.Point(655, 228);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(33, 15);
             this.lblPrice.TabIndex = 7;
@@ -171,7 +175,7 @@
             // lblCost
             // 
             this.lblCost.AutoSize = true;
-            this.lblCost.Location = new System.Drawing.Point(651, 257);
+            this.lblCost.Location = new System.Drawing.Point(655, 260);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(31, 15);
             this.lblCost.TabIndex = 8;
@@ -179,14 +183,14 @@
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(748, 107);
+            this.txtCode.Location = new System.Drawing.Point(731, 104);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(110, 23);
             this.txtCode.TabIndex = 9;
             // 
             // txtDes
             // 
-            this.txtDes.Location = new System.Drawing.Point(748, 144);
+            this.txtDes.Location = new System.Drawing.Point(731, 144);
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(110, 23);
             this.txtDes.TabIndex = 10;
@@ -194,30 +198,42 @@
             // cbItemType
             // 
             this.cbItemType.FormattingEnabled = true;
-            this.cbItemType.Location = new System.Drawing.Point(748, 185);
+            this.cbItemType.Location = new System.Drawing.Point(731, 185);
             this.cbItemType.Name = "cbItemType";
             this.cbItemType.Size = new System.Drawing.Size(110, 23);
             this.cbItemType.TabIndex = 11;
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(748, 220);
+            this.txtPrice.Location = new System.Drawing.Point(731, 220);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(110, 23);
             this.txtPrice.TabIndex = 12;
             // 
             // txtCost
             // 
-            this.txtCost.Location = new System.Drawing.Point(748, 257);
+            this.txtCost.Location = new System.Drawing.Point(731, 252);
             this.txtCost.Name = "txtCost";
             this.txtCost.Size = new System.Drawing.Size(110, 23);
             this.txtCost.TabIndex = 13;
+            // 
+            // lblItems
+            // 
+            this.lblItems.AutoSize = true;
+            this.lblItems.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblItems.Location = new System.Drawing.Point(26, 9);
+            this.lblItems.Name = "lblItems";
+            this.lblItems.Size = new System.Drawing.Size(57, 25);
+            this.lblItems.TabIndex = 14;
+            this.lblItems.Text = "Items";
             // 
             // ItemF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(931, 450);
+            this.Controls.Add(this.lblItems);
             this.Controls.Add(this.txtCost);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.cbItemType);
@@ -264,5 +280,6 @@
         private ComboBox cbItemType;
         private TextBox txtPrice;
         private TextBox txtCost;
+        private Label lblItems;
     }
 }

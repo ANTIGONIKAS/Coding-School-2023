@@ -11,9 +11,9 @@ namespace FuelStation.Blazor.Web.Server.Controllers
     public class TransactionController : ControllerBase
     {
         private readonly IEntityRepo<Transaction> _transactionRepo;
-        private readonly IEntityRepo<CustomerRepo> _customerRepo;
-        private readonly IEntityRepo<EmployeeRepo> _employeeRepo;
-        private readonly IEntityRepo<ItemRepo> _itemRepo;
+        //private readonly IEntityRepo<CustomerRepo> _customerRepo;
+        //private readonly IEntityRepo<EmployeeRepo> _employeeRepo;
+        //private readonly IEntityRepo<ItemRepo> _itemRepo;
 
         public TransactionController(IEntityRepo<Transaction> transactionRepo)
             
@@ -21,6 +21,16 @@ namespace FuelStation.Blazor.Web.Server.Controllers
             _transactionRepo=transactionRepo;
           
 
+        }
+        public async Task Put(TransactionEditDto transaction)
+        {
+            var itemToUpdate = _transactionRepo.GetById(transaction.Id);
+            itemToUpdate.Date = transaction.Date;
+            itemToUpdate.PayMethod = transaction.PayMethod;
+            itemToUpdate.TotalValue = transaction.TotalValue;
+            itemToUpdate.CustomerId = transaction.CustomerId;
+            itemToUpdate.EmployeeId = transaction.EmployeeId;
+            _transactionRepo.Update(transaction.Id, itemToUpdate);
         }
 
         [HttpGet]
@@ -35,11 +45,7 @@ namespace FuelStation.Blazor.Web.Server.Controllers
                 TotalValue = transaction.TotalValue,
                 CustomerId = transaction.Customer.Id,
                 EmployeeId = transaction.Employee.Id
-                
-                
-
-
-            });
+            }).ToList();
         }
 
         [HttpGet("{id}")]
@@ -64,17 +70,8 @@ namespace FuelStation.Blazor.Web.Server.Controllers
             newTransaction.EmployeeId = transaction.EmployeeId;
             _transactionRepo.Add(newTransaction);
         }
-        [HttpPut]
-        public async Task Put(TransactionEditDto transaction)
-        {
-            var itemToUpdate = _transactionRepo.GetById(transaction.Id);
-            itemToUpdate.Date = transaction.Date;
-            itemToUpdate.PayMethod = transaction.PayMethod;
-            itemToUpdate.TotalValue = transaction.TotalValue;
-            itemToUpdate.CustomerId = transaction.CustomerId;
-            itemToUpdate.EmployeeId = transaction.EmployeeId;
-            _transactionRepo.Update(transaction.Id, itemToUpdate);
-        }
+
+        
 
 
         [HttpDelete("{id}")]

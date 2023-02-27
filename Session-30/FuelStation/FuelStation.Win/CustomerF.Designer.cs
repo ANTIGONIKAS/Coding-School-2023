@@ -37,6 +37,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.bsCustomers = new System.Windows.Forms.BindingSource(this.components);
+            this.lblCustomers = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grvCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomers)).BeginInit();
             this.SuspendLayout();
@@ -104,11 +105,22 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblCustomers
+            // 
+            this.lblCustomers.AutoSize = true;
+            this.lblCustomers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCustomers.Location = new System.Drawing.Point(55, 18);
+            this.lblCustomers.Name = "lblCustomers";
+            this.lblCustomers.Size = new System.Drawing.Size(85, 21);
+            this.lblCustomers.TabIndex = 4;
+            this.lblCustomers.Text = "Customers";
+            // 
             // CustomerF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblCustomers);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -119,6 +131,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grvCustomers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomers)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -132,5 +145,6 @@
         private Button btnDelete;
         private Button btnClose;
         private BindingSource bsCustomers;
+        private Label lblCustomers;
     }
 }

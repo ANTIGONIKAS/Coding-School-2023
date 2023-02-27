@@ -48,9 +48,6 @@ namespace FuelStation.EF.Repositories
             .Include(transaction => transaction.TransactionLines)
             .Include(transaction => transaction.Customer)
             .Include(transaction => transaction.Employee).SingleOrDefault();             
-                           
-                           
-
         }
 
         public void Update(int id, Transaction entity)
@@ -62,6 +59,8 @@ namespace FuelStation.EF.Repositories
             dbTransaction.Date = entity.Date;
             dbTransaction.PayMethod= entity.PayMethod;
             dbTransaction.TotalValue= entity.TotalValue;
+            dbTransaction.EmployeeId = entity.EmployeeId;
+            dbTransaction.CustomerId = entity.CustomerId;
             context.SaveChanges();
 
 
