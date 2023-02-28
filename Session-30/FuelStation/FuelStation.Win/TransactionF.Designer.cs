@@ -40,13 +40,26 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblTransactions = new System.Windows.Forms.Label();
-            this.lblPayMethod = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.txtDate = new System.Windows.Forms.TextBox();
-            this.cbPayMethod = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.bsLines = new System.Windows.Forms.BindingSource(this.components);
+            this.grvLines = new System.Windows.Forms.DataGridView();
+            this.colQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiscountPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colItemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNetValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiscountValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTransaction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSaveLine = new System.Windows.Forms.Button();
+            this.btnDeleteLine = new System.Windows.Forms.Button();
+            this.lblLines = new System.Windows.Forms.Label();
+            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvLines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             this.SuspendLayout();
             // 
             // grvTransactions
@@ -61,7 +74,7 @@
             this.colTotalValue,
             this.colCustomer,
             this.colEmployee});
-            this.grvTransactions.Location = new System.Drawing.Point(21, 52);
+            this.grvTransactions.Location = new System.Drawing.Point(21, 37);
             this.grvTransactions.Name = "grvTransactions";
             this.grvTransactions.RowTemplate.Height = 25;
             this.grvTransactions.Size = new System.Drawing.Size(572, 259);
@@ -101,7 +114,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(146, 339);
+            this.btnSave.Location = new System.Drawing.Point(122, 316);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -111,7 +124,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(266, 339);
+            this.btnDelete.Location = new System.Drawing.Point(243, 316);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 2;
@@ -121,7 +134,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(518, 339);
+            this.btnClose.Location = new System.Drawing.Point(518, 316);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
@@ -133,48 +146,15 @@
             // 
             this.lblTransactions.AutoSize = true;
             this.lblTransactions.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTransactions.Location = new System.Drawing.Point(21, 18);
+            this.lblTransactions.Location = new System.Drawing.Point(21, 9);
             this.lblTransactions.Name = "lblTransactions";
             this.lblTransactions.Size = new System.Drawing.Size(116, 25);
             this.lblTransactions.TabIndex = 4;
             this.lblTransactions.Text = "Transactions";
             // 
-            // lblPayMethod
-            // 
-            this.lblPayMethod.AutoSize = true;
-            this.lblPayMethod.Location = new System.Drawing.Point(599, 161);
-            this.lblPayMethod.Name = "lblPayMethod";
-            this.lblPayMethod.Size = new System.Drawing.Size(68, 15);
-            this.lblPayMethod.TabIndex = 5;
-            this.lblPayMethod.Text = "PayMethod";
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(599, 125);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(31, 15);
-            this.lblDate.TabIndex = 7;
-            this.lblDate.Text = "Date";
-            // 
-            // txtDate
-            // 
-            this.txtDate.Location = new System.Drawing.Point(673, 122);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(100, 23);
-            this.txtDate.TabIndex = 9;
-            // 
-            // cbPayMethod
-            // 
-            this.cbPayMethod.FormattingEnabled = true;
-            this.cbPayMethod.Location = new System.Drawing.Point(673, 158);
-            this.cbPayMethod.Name = "cbPayMethod";
-            this.cbPayMethod.Size = new System.Drawing.Size(100, 23);
-            this.cbPayMethod.TabIndex = 11;
-            // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(36, 339);
+            this.btnAdd.Location = new System.Drawing.Point(21, 316);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
@@ -182,16 +162,110 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // grvLines
+            // 
+            this.grvLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colQuantity,
+            this.colDiscountPercent,
+            this.colItemPrice,
+            this.colNetValue,
+            this.colDiscountValue,
+            this.dataGridViewTextBoxColumn1,
+            this.colTransaction,
+            this.colItem});
+            this.grvLines.Location = new System.Drawing.Point(21, 410);
+            this.grvLines.Name = "grvLines";
+            this.grvLines.RowTemplate.Height = 25;
+            this.grvLines.Size = new System.Drawing.Size(723, 185);
+            this.grvLines.TabIndex = 13;
+            // 
+            // colQuantity
+            // 
+            this.colQuantity.DataPropertyName = "Quantity";
+            this.colQuantity.HeaderText = "Quantity";
+            this.colQuantity.Name = "colQuantity";
+            // 
+            // colDiscountPercent
+            // 
+            this.colDiscountPercent.DataPropertyName = "DiscountPercent";
+            this.colDiscountPercent.HeaderText = "DiscountPercent";
+            this.colDiscountPercent.Name = "colDiscountPercent";
+            // 
+            // colItemPrice
+            // 
+            this.colItemPrice.DataPropertyName = "ItemPrice";
+            this.colItemPrice.HeaderText = "ItemPrice";
+            this.colItemPrice.Name = "colItemPrice";
+            // 
+            // colNetValue
+            // 
+            this.colNetValue.DataPropertyName = "NetValue";
+            this.colNetValue.HeaderText = "NetValue";
+            this.colNetValue.Name = "colNetValue";
+            // 
+            // colDiscountValue
+            // 
+            this.colDiscountValue.DataPropertyName = "DiscountValue";
+            this.colDiscountValue.HeaderText = "DiscountValue";
+            this.colDiscountValue.Name = "colDiscountValue";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TotalValue";
+            this.dataGridViewTextBoxColumn1.HeaderText = "TotalValue";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // colTransaction
+            // 
+            this.colTransaction.DataPropertyName = "TransactionId";
+            this.colTransaction.HeaderText = "Transaction";
+            this.colTransaction.Name = "colTransaction";
+            // 
+            // colItem
+            // 
+            this.colItem.DataPropertyName = "ItemId";
+            this.colItem.HeaderText = "Item";
+            this.colItem.Name = "colItem";
+            // 
+            // btnSaveLine
+            // 
+            this.btnSaveLine.Location = new System.Drawing.Point(21, 617);
+            this.btnSaveLine.Name = "btnSaveLine";
+            this.btnSaveLine.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveLine.TabIndex = 14;
+            this.btnSaveLine.Text = "Save";
+            this.btnSaveLine.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteLine
+            // 
+            this.btnDeleteLine.Location = new System.Drawing.Point(122, 617);
+            this.btnDeleteLine.Name = "btnDeleteLine";
+            this.btnDeleteLine.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteLine.TabIndex = 15;
+            this.btnDeleteLine.Text = "Delete";
+            this.btnDeleteLine.UseVisualStyleBackColor = true;
+            // 
+            // lblLines
+            // 
+            this.lblLines.AutoSize = true;
+            this.lblLines.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblLines.Location = new System.Drawing.Point(21, 374);
+            this.lblLines.Name = "lblLines";
+            this.lblLines.Size = new System.Drawing.Size(125, 21);
+            this.lblLines.TabIndex = 16;
+            this.lblLines.Text = "TransactionLines";
+            // 
             // TransactionF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 660);
+            this.Controls.Add(this.lblLines);
+            this.Controls.Add(this.btnDeleteLine);
+            this.Controls.Add(this.btnSaveLine);
+            this.Controls.Add(this.grvLines);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.cbPayMethod);
-            this.Controls.Add(this.txtDate);
-            this.Controls.Add(this.lblDate);
-            this.Controls.Add(this.lblPayMethod);
             this.Controls.Add(this.lblTransactions);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
@@ -202,6 +276,9 @@
             this.Load += new System.EventHandler(this.TransactionF_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsLines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvLines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,15 +292,25 @@
         private Button btnDelete;
         private Button btnClose;
         private Label lblTransactions;
-        private Label lblPayMethod;
-        private Label lblDate;
-        private TextBox txtDate;
-        private ComboBox cbPayMethod;
         private DataGridViewTextBoxColumn colDate;
         private DataGridViewComboBoxColumn colPayMethod;
         private DataGridViewTextBoxColumn colTotalValue;
         private DataGridViewTextBoxColumn colCustomer;
         private DataGridViewTextBoxColumn colEmployee;
         private Button btnAdd;
+        private BindingSource bsLines;
+        private DataGridView grvLines;
+        private Button btnSaveLine;
+        private Button btnDeleteLine;
+        private Label lblLines;
+        private DataGridViewTextBoxColumn colQuantity;
+        private DataGridViewTextBoxColumn colDiscountPercent;
+        private DataGridViewTextBoxColumn colItemPrice;
+        private DataGridViewTextBoxColumn colNetValue;
+        private DataGridViewTextBoxColumn colDiscountValue;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn colTransaction;
+        private DataGridViewTextBoxColumn colItem;
+        private BindingSource bsItems;
     }
 }

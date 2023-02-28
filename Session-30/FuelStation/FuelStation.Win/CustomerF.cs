@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http.Json;
+using Microsoft.VisualBasic.Logging;
 
 namespace FuelStation.Win
 {
@@ -129,6 +130,9 @@ namespace FuelStation.Win
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            LoginF loginF = new LoginF();
+            loginF.Show();
+
             this.Close();
 
         }

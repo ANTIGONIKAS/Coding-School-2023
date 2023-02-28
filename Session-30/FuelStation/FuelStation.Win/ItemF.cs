@@ -1,5 +1,6 @@
 ﻿using FuelStation.Blazor.Web.Shared;
 using FuelStation.Model.Enums;
+using Microsoft.VisualBasic.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -113,16 +114,18 @@ namespace FuelStation.Win
         //method update
         private async Task UpdateItem(ItemListDto item)
         {
-            //item.Code = txtCode.Text;
-            //item.Description = txtDes.Text;
+            item.Code = txtCode.Text;
+            item.Description = txtDes.Text;
 
-            //item.Price = decimal.Parse(txtPrice.Text);
-            //item.Cost = decimal.Parse(txtCost.Text);
-            //item.ItemType = (ItemType)Enum.Parse(typeof(ItemType), cbItemType.Text.ToString());
+            item.Price = decimal.Parse(txtPrice.Text);
+            item.Cost = decimal.Parse(txtCost.Text);
+            item.ItemType = (ItemType)Enum.Parse(typeof(ItemType), cbItemType.Text.ToString());
 
             HttpResponseMessage? response = null;
             response = await client.PutAsJsonAsync("item", item);
+
             SetControls();
+
             if (response.IsSuccessStatusCode)
             {
                 MessageBox.Show("Item Updated successfully");
@@ -178,13 +181,13 @@ namespace FuelStation.Win
 
             if (item.Id == 0)
             {
-                UpdateItem(item);
+                CreateItem(item);
+
             }
             else
             {
-
-                CreateItem(item);
-
+                UpdateItem(item);
+        
             }
         }
         //button delete
@@ -196,7 +199,11 @@ namespace FuelStation.Win
         //method close
         private void btnClose_Click(object sender, EventArgs e)
         {
-          this.Close();
+
+            LoginF loginF= new LoginF();
+            loginF.Show();
+            
+            this.Close();
         }
 
         

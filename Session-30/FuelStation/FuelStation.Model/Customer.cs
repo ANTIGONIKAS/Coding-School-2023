@@ -33,5 +33,9 @@ namespace FuelStation.Model
         //Relations
         public List<Transaction> Transactions { get; set; } = new List<Transaction>();
 
+        //public void ShowDialog()
+        //{
+           
+        //}
     }
 }

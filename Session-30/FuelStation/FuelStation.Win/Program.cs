@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic.Logging;
+
 namespace FuelStation.Win
 {
     internal static class Program
@@ -13,9 +15,11 @@ namespace FuelStation.Win
             ApplicationConfiguration.Initialize();
           // Application.Run(new CustomerF());
             //Application.Run(new ItemF());
-            Application.Run(new TransactionF());
-           // Application.Run(new TransactionLineF());
-            
+            //Application.Run(new TransactionF());
+            // Application.Run(new TransactionLineF());
+            Application.Run(new LoginF());
+
+
 
         }
     }

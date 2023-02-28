@@ -55,7 +55,8 @@ namespace FuelStation.Blazor.Web.Server.Controllers
         [HttpPost]
         public async Task Post(TransactionLineEditDto transactionLine)
         {
-            var newTransactionLine = new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.DiscountPercent);
+            var newTransactionLine = new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.DiscountPercent,transactionLine.TotalValue,transactionLine.DiscountValue,
+               transactionLine.NetValue);
               
 
             newTransactionLine.TransactionId = transactionLine.TransactionId;

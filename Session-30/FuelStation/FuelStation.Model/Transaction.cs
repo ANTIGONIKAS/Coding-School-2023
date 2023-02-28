@@ -37,6 +37,6 @@ namespace FuelStation.Model
         public int CustomerId { get; set; }
         public Customer Customer { get; set; } = null!;
 
-        public List<TransactionLine> TransactionLines { get; set; }
+        public List<TransactionLine> TransactionLines { get; set; } = new List<TransactionLine>();
     }
 }
