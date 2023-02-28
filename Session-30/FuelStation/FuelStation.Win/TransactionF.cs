@@ -83,9 +83,9 @@ namespace FuelStation.Win
             bsTransactions.DataSource = transactions;
             grvTransactions.DataSource = bsTransactions;
             bsLines.DataSource = bsTransactions;
+            bsLines.DataMember = "TransactionLines";
 
             bsLines.DataSource = transactionLines;
-            bsLines.DataMember = "TransactionLines";
             grvLines.DataSource = bsLines;
             bsItems.DataSource = items;
            
