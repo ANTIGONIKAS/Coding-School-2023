@@ -22,8 +22,8 @@ namespace FuelStation.Win
 {
     public partial class TransactionF : Form
     {
-        private EmployeeListDto employee = new EmployeeListDto();
-        private CustomerListDto customer = new  CustomerListDto();
+        private List<EmployeeListDto> employee = new List<EmployeeListDto>();
+        private List<CustomerListDto> customer = new  List<CustomerListDto>();
         private List<ItemListDto> items = new List<ItemListDto>();
         private TransactionListDto newTransaction = new();
 
@@ -33,7 +33,7 @@ namespace FuelStation.Win
 
 
 
-        //public List<TransactionLine> transactionLines;
+      
         
         //HTTPCLIENT
         private readonly HttpClient httpClient = new HttpClient(new HttpClientHandler())
@@ -72,25 +72,27 @@ namespace FuelStation.Win
         {
             transactions = await httpClient.GetFromJsonAsync<List<TransactionListDto>>("transaction");
 
-           // customer = await httpClient.GetFromJsonAsync<CustomerListDto>($"customer/{customer.Id}");
+            // customer = await httpClient.GetFromJsonAsync<CustomerListDto>($"customer/{customer.Id}");
 
-          //  employee = await httpClient.GetFromJsonAsync<EmployeeListDto>($"employee/{employee.Id}");
+            //  employee = await httpClient.GetFromJsonAsync<EmployeeListDto>($"employee/{employee.Id}");
 
-           // items = await httpClient.GetFromJsonAsync<List<ItemListDto>>("item");
+            // items = await httpClient.GetFromJsonAsync<List<ItemListDto>>("item");
 
             //cbPayMethod.DataSource = Enum.GetValues(typeof(PayMethod));
 
-            bsItems.DataSource = items;
-            
             bsTransactions.DataSource = transactions;
-
             grvTransactions.DataSource = bsTransactions;
-
             bsLines.DataSource = bsTransactions;
-            bsLines.DataSource = transactionLines;
 
+            bsLines.DataSource = transactionLines;
+            bsLines.DataMember = "TransactionLines";
             grvLines.DataSource = bsLines;
-          //  bsLines.DataMember = "TransactionLines";
+            bsItems.DataSource = items;
+           
+
+
+
+            //grvLines.DataSource = bsLines;
          
         }
 

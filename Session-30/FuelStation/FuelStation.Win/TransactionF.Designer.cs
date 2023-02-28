@@ -177,7 +177,7 @@
             this.grvLines.Location = new System.Drawing.Point(21, 410);
             this.grvLines.Name = "grvLines";
             this.grvLines.RowTemplate.Height = 25;
-            this.grvLines.Size = new System.Drawing.Size(723, 185);
+            this.grvLines.Size = new System.Drawing.Size(856, 185);
             this.grvLines.TabIndex = 13;
             // 
             // colQuantity
@@ -260,7 +260,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 660);
+            this.ClientSize = new System.Drawing.Size(971, 660);
             this.Controls.Add(this.lblLines);
             this.Controls.Add(this.btnDeleteLine);
             this.Controls.Add(this.btnSaveLine);
