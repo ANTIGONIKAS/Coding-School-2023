@@ -39,7 +39,7 @@ namespace FuelStation.Web.Blazor.Server.Controllers
                 Name = result.Name,
                 Surname = result.Surname,
                 CardNumber = result.CardNumber,
-                Transactions=result.Transactions
+               // Transactions=result.Transactions
             };
         }
 

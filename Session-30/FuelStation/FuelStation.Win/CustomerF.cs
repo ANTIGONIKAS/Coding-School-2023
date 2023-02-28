@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http.Json;
 using Microsoft.VisualBasic.Logging;
+using System.Xml.Linq;
+using Azure;
 
 namespace FuelStation.Win
 {
@@ -24,6 +26,8 @@ namespace FuelStation.Win
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7216/");
         }
+        private List<CustomerListDto> customers = new();
+        private CustomerListDto _customerListDto;
 
         private void CustomerF_Load(object sender, EventArgs e)
         {
@@ -40,6 +44,8 @@ namespace FuelStation.Win
             }
         }
 
+
+        //get
         private async Task<List<CustomerListDto>?> LoadCustomers()
         {
             var response = await client.GetAsync("customer");
@@ -51,14 +57,14 @@ namespace FuelStation.Win
             return null;
         }
 
-        private async Task CreateCustomer(CustomerListDto customer)
+        private async Task CreateCustomer(CustomerEditDto customer)
         {
             HttpResponseMessage? response = null;
             response = await client.PostAsJsonAsync("customer", customer);
             if (response.IsSuccessStatusCode)
             {
                 MessageBox.Show("Customer Created successfully");
-                 PutCustomersToDataSource();
+                PutCustomersToDataSource();
             }
             else
             {
@@ -67,7 +73,7 @@ namespace FuelStation.Win
         }
 
 
-        private async Task UpdateCustomer(CustomerListDto customer)
+        private async Task UpdateCustomer(CustomerEditDto customer)
         {
             HttpResponseMessage? response = null;
             response = await client.PutAsJsonAsync("customer", customer);
@@ -81,6 +87,9 @@ namespace FuelStation.Win
                 MessageBox.Show("Error customer is not updated.");
             }
         }
+
+
+
 
         private async Task DeleteCustomer(CustomerListDto? customer)
         {
@@ -105,24 +114,30 @@ namespace FuelStation.Win
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
+
+         
             CustomerListDto customer = (CustomerListDto)bsCustomers.Current;
+            CustomerEditDto temp = new();
+            temp.Id = customer.Id;
+            temp.Surname = customer.Surname;
+            temp.Name = customer.Name;
+            temp.CardNumber=customer.CardNumber;
+                if (customer.Id == 0)
+                {
+                    CreateCustomer(temp);
 
-            if (customer.Id ==0)
-            {
-                CreateCustomer(customer);
+                }
+                else
+                {
+
+                    UpdateCustomer(temp);
+                }
             }
-            else
-            {
 
-                UpdateCustomer(customer);
-               
-            }
-        }
-    
-
-        private void btnDelete_Click(object sender, EventArgs e)
+        
+            private void btnDelete_Click(object sender, EventArgs e)
         {
         CustomerListDto customer = (CustomerListDto)bsCustomers.Current;
             DeleteCustomer(customer);

@@ -114,32 +114,35 @@
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnSave.Location = new System.Drawing.Point(122, 316);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnDelete.Location = new System.Drawing.Point(243, 316);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnClose.Location = new System.Drawing.Point(518, 316);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblTransactions
@@ -154,12 +157,13 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnAdd.Location = new System.Drawing.Point(21, 316);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Add new";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // grvLines
@@ -230,29 +234,31 @@
             // 
             // btnSaveLine
             // 
+            this.btnSaveLine.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnSaveLine.Location = new System.Drawing.Point(21, 617);
             this.btnSaveLine.Name = "btnSaveLine";
             this.btnSaveLine.Size = new System.Drawing.Size(75, 23);
             this.btnSaveLine.TabIndex = 14;
             this.btnSaveLine.Text = "Save";
-            this.btnSaveLine.UseVisualStyleBackColor = true;
+            this.btnSaveLine.UseVisualStyleBackColor = false;
             // 
             // btnDeleteLine
             // 
+            this.btnDeleteLine.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnDeleteLine.Location = new System.Drawing.Point(122, 617);
             this.btnDeleteLine.Name = "btnDeleteLine";
             this.btnDeleteLine.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteLine.TabIndex = 15;
             this.btnDeleteLine.Text = "Delete";
-            this.btnDeleteLine.UseVisualStyleBackColor = true;
+            this.btnDeleteLine.UseVisualStyleBackColor = false;
             // 
             // lblLines
             // 
             this.lblLines.AutoSize = true;
-            this.lblLines.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblLines.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLines.Location = new System.Drawing.Point(21, 374);
             this.lblLines.Name = "lblLines";
-            this.lblLines.Size = new System.Drawing.Size(125, 21);
+            this.lblLines.Size = new System.Drawing.Size(151, 25);
             this.lblLines.TabIndex = 16;
             this.lblLines.Text = "TransactionLines";
             // 
@@ -260,6 +266,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(971, 660);
             this.Controls.Add(this.lblLines);
             this.Controls.Add(this.btnDeleteLine);

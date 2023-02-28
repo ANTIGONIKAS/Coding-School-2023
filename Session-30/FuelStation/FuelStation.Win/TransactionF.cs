@@ -83,7 +83,7 @@ namespace FuelStation.Win
             bsTransactions.DataSource = transactions;
             grvTransactions.DataSource = bsTransactions;
             bsLines.DataSource = bsTransactions;
-            bsLines.DataMember = "TransactionLines";
+            //bsLines.DataMember = "TransactionLines";
 
             bsLines.DataSource = transactionLines;
             grvLines.DataSource = bsLines;
@@ -139,7 +139,8 @@ namespace FuelStation.Win
         private async void btnSave_Click(object sender, EventArgs e)
         {
             TransactionListDto transaction = (TransactionListDto)bsTransactions.Current;
-            TransactionEditDto selectedTransactions = new();
+            TransactionListDto selectedTransactions = new();
+
             selectedTransactions.Id = transaction.Id;
             selectedTransactions.EmployeeId = transaction.EmployeeId;
             selectedTransactions.CustomerId = transaction.CustomerId;
