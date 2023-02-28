@@ -41,7 +41,13 @@ namespace FuelStation.Model
 
             Quantity = quantity;
             ItemPrice = itemPrice;
+            NetValue = quantity * itemPrice;
             DiscountPercent = discountPercent;
+            DiscountPercent = discountPercent;
+            DiscountValue = discountPercent / 100 * NetValue;
+            DiscountPercent = discountPercent;
+            TotalValue = NetValue - DiscountValue;
+            NetValue = quantity * itemPrice;
 
         }   
 
